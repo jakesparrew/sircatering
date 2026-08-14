@@ -283,7 +283,57 @@
   });
 
   /* ==========================================================
-     5. SCROLL-REVEAL
+     5. KRUISVERVAGING IN DE HERO
+     Het aantal beelden komt uit de DOM: een <img> toevoegen in
+     index.html volstaat. Beelden die niet laden vallen af.
+     ========================================================== */
+  (function heroCrossfade() {
+    var HOLD_MS = 6000;
+
+    var box = document.querySelector('[data-crossfade]');
+    if (!box) return;
+
+    var shots = Array.prototype.filter.call(
+      box.querySelectorAll('img'),
+      function (img) { return !img.hasAttribute('data-missing'); }
+    );
+    /* Eén beeld, of gebruiker wil geen beweging: laat het eerste staan. */
+    if (shots.length < 2 || reduceMotion) return;
+
+    var index = 0;
+    var timer = null;
+
+    box.classList.add('is-crossfading');
+    shots[0].classList.add('is-active');
+
+    function show(i) {
+      shots[index].classList.remove('is-active');
+      index = (i + shots.length) % shots.length;
+      shots[index].classList.add('is-active');
+    }
+
+    function start() {
+      if (timer) return;
+      timer = window.setInterval(function () { show(index + 1); }, HOLD_MS);
+    }
+    function stop() { window.clearInterval(timer); timer = null; }
+
+    document.addEventListener('visibilitychange', function () {
+      document.hidden ? stop() : start();
+    });
+
+    /* Alleen laten draaien zolang de hero in beeld is. */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries[0].isIntersecting ? start() : stop();
+      }, { threshold: .15 }).observe(box);
+    } else {
+      start();
+    }
+  })();
+
+  /* ==========================================================
+     6. SCROLL-REVEAL
      ========================================================== */
   (function reveal() {
     var items = document.querySelectorAll('.reveal');
@@ -306,7 +356,7 @@
   })();
 
   /* ==========================================================
-     6. JAARTAL IN DE FOOTER
+     7. JAARTAL IN DE FOOTER
      ========================================================== */
   (function year() {
     var el = document.querySelector('[data-year]');

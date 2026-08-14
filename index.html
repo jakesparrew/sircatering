@@ -109,8 +109,7 @@ document.addEventListener('error', function (e) {
     <div class="menu__meta">
       <p><a href="mailto:mail@sircatering.be">mail@sircatering.be</a></p>
       <p>Speistraat 43<br>9030 Mariakerke</p>
-      <!-- TODO: vul hieronder het juiste Instagram-profiel in -->
-      <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></p>
+      <p><a href="https://www.instagram.com/sircatering" target="_blank" rel="noopener">Instagram</a></p>
     </div>
   </div>
 </div>
@@ -121,14 +120,17 @@ document.addEventListener('error', function (e) {
        1. HERO
        ============================================================ -->
   <section class="hero" aria-label="SIR. Premium Event Catering">
-    <div class="hero__media ph ph--hero" data-label="HERO" data-size="2400 × 1600">
+    <!-- Deze beelden vervagen in elkaar. Een vierde toevoegen = één regel
+         erbij; de JavaScript leest het aantal zelf uit. -->
+    <div class="hero__media ph ph--hero" data-label="HERO" data-size="1890 × 1418" data-crossfade>
       <img src="images/hero.jpg" alt="" fetchpriority="high" decoding="async">
+      <img src="images/hero-2.jpg" alt="" loading="lazy" decoding="async">
+      <img src="images/hero-3.jpg" alt="" loading="lazy" decoding="async">
     </div>
     <div class="hero__scrim" aria-hidden="true"></div>
 
     <div class="hero__top">
-      <!-- TODO: vul het juiste Instagram-profiel in -->
-      <a class="hero__link" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a class="hero__link" href="https://www.instagram.com/sircatering" target="_blank" rel="noopener">Instagram</a>
       <a class="hero__link" href="#contact">Contact</a>
     </div>
 
@@ -366,8 +368,7 @@ document.addEventListener('error', function (e) {
 
   <p class="footer__legal">
     <span>&copy; <span data-year>2026</span> Sir Catering</span>
-    <!-- TODO: vul het juiste Instagram-profiel in -->
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.instagram.com/sircatering" target="_blank" rel="noopener">Instagram</a>
   </p>
 </footer>
 

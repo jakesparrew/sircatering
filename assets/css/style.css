@@ -496,12 +496,25 @@ address { font-style: normal; }
   overflow: hidden;
 }
 .hero__media { position: absolute; inset: 0; }
+
+/* Kruisvervaging tussen de hero-beelden.
+   Zonder JavaScript blijft het eerste beeld gewoon staan: de klasse
+   is-crossfading wordt pas gezet zodra de wissel echt draait. */
+.hero__media[data-crossfade] > img + img { opacity: 0; }
+.hero__media.is-crossfading > img {
+  opacity: 0;
+  transition: opacity 2s var(--ease);
+}
+.hero__media.is-crossfading > img.is-active { opacity: 1; }
 .hero__scrim {
   position: absolute;
   inset: 0;
   z-index: 2;
+  /* Iets zwaarder aan de randen: de hero wisselt tussen beelden met heel
+     verschillende helderheid — de duinfoto heeft een lichte lucht waar de
+     witte links anders wegvallen. */
   background:
-    linear-gradient(180deg, rgba(32,32,32,.55) 0%, rgba(32,32,32,.15) 28%, rgba(32,32,32,.2) 60%, rgba(32,32,32,.6) 100%);
+    linear-gradient(180deg, rgba(32,32,32,.66) 0%, rgba(32,32,32,.18) 26%, rgba(32,32,32,.22) 58%, rgba(32,32,32,.66) 100%);
 }
 .hero > *:not(.hero__media):not(.hero__scrim) { position: relative; z-index: 3; }
 
@@ -681,10 +694,12 @@ address { font-style: normal; }
   .split__media { min-height: 100%; }
 }
 
-/* Mobiel: beeld altijd bovenaan, tekst eronder en links uitgelijnd */
+/* Mobiel: tekst altijd eerst, beeld eronder. Zo volgt op de hero meteen de
+   About-tekst in plaats van opnieuw een foto, en wisselen tekst en beeld
+   elkaar de hele pagina door af. Alles links uitgelijnd voor de leesbaarheid. */
 @media (max-width: 59.99em) {
-  .split__text { order: 2; }
-  .split__media { order: 1; }
+  .split__text { order: 1; }
+  .split__media { order: 2; }
   .split__text--end { align-items: flex-start; text-align: left; }
   .split__text--end .quote-mark { margin-left: 0; }
 }
@@ -827,6 +842,16 @@ address { font-style: normal; }
   .quote__body { max-width: none; padding-left: 1.75rem; }
 }
 
+/* Op mobiel staat de quote klem tussen de About-carrousel en de volgende
+   sectie — drie fotoblokken op rij. Daarom valt hier het beeld weg en blijft
+   de quote als vlak statement op charcoal staan. Dat geeft rust in het ritme
+   en laat de uitspraak zelf harder aankomen. */
+@media (max-width: 59.99em) {
+  .quote { min-height: min(62svh, 30rem); }
+  .quote__media,
+  .quote__scrim { display: none; }
+}
+
 /* ============================================================
    7. CONTACT & BOOKING
    ============================================================ */
@@ -942,7 +967,10 @@ address { font-style: normal; }
   display: flex;
   flex-direction: column;
   min-height: min(92svh, 50rem);
-  padding: clamp(3.5rem, 10vh, 6rem) var(--pad-x) clamp(1.5rem, 4vh, 2.5rem);
+  /* Onderaan krap gehouden om ruimte te maken voor het grote woordmerk, maar
+     bovenaan minstens de hoogte van de vaste header — anders schuift die over
+     "What's on the menu?" heen. */
+  padding: max(var(--header-h), 4vh) var(--pad-x) clamp(1.25rem, 3vh, 2rem);
   background: var(--charcoal);
   color: #fff;
   overflow: hidden;
@@ -984,16 +1012,16 @@ address { font-style: normal; }
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: clamp(4rem, 16vw, 13rem);
-  line-height: .85;
-  letter-spacing: -.02em;
+  font-size: clamp(4.75rem, 21vw, 17rem);
+  line-height: .82;
+  letter-spacing: -.025em;
   text-transform: uppercase;
   color: var(--butter);
 }
 
 .footer__contact {
   margin-top: auto;
-  padding-top: 2.5rem;
+  padding-top: 1.5rem;
   display: grid;
   gap: .15rem;
   justify-items: end;
