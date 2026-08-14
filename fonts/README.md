@@ -1,31 +1,56 @@
 # Lettertypes
 
+De styleguide schrijft twee lettertypes voor: **LEMON MILK** voor de titels en
+**Poppins** voor de lopende tekst.
+
 ## Poppins — al geregeld
 
-Poppins wordt geladen via Google Fonts. Je hoeft hier niets voor te doen.
+Wordt geladen via Google Fonts. Je hoeft hier niets voor te doen.
 
-## LEMON MILK — hier neer te zetten
+## LEMON MILK — dit moet jij aanleveren
 
-LEMON MILK is een betaald lettertype en zit daarom niet in deze repository.
-De site is al volledig voorbereid: zet de bestanden in **deze map** met exact
-deze namen en ze worden automatisch gebruikt.
+LEMON MILK (van Marsnev) is **geen gratis lettertype voor websites**. Het is
+gratis voor persoonlijk gebruik, maar zodra het op een commerciële site staat
+is een licentie nodig. Daarom staat het bestand niet in deze repository: ik kan
+het niet voor je downloaden zonder die licentie.
+
+Waarschijnlijk heeft de ontwerper die het merk maakte de bestanden al — vraag
+ze daar eerst. Anders koop je ze bij de maker.
+
+### Zodra je de bestanden hebt
+
+Zet ze in **deze map**. Meer hoeft niet — de site pikt ze automatisch op.
 
 ```
 fonts/
-├── LEMONMILK-Regular.woff2
-├── LEMONMILK-Bold.woff2
-└── LEMONMILK-BoldItalic.woff2
+├── LEMONMILK-Regular.otf
+├── LEMONMILK-RegularItalic.otf
+├── LEMONMILK-Bold.otf
+└── LEMONMILK-BoldItalic.otf
 ```
 
-`.otf` werkt ook (zelfde namen, andere extensie) — maar `.woff2` is een stuk
-kleiner en dus sneller. Converteren kan gratis via
-<https://cloudconvert.com/otf-to-woff2>.
+`.ttf` werkt ook, en een paar andere veelgebruikte schrijfwijzen
+(`LemonMilk-Bold.otf`, `LemonMilkBold.otf`) worden eveneens herkend. Je hoeft
+dus meestal niets te hernoemen.
+
+> **Let op:** op Vercel zijn bestandsnamen hoofdlettergevoelig, op Windows niet.
+> Werkt het lokaal wel en online niet, kijk dan eerst naar de hoofdletters.
+
+### Sneller maken (aanbevolen)
+
+`.otf` is fors; `.woff2` is ongeveer vier keer kleiner. Converteren kan gratis
+via <https://cloudconvert.com/otf-to-woff2>. Zet het resultaat er met dezelfde
+naam naast — `.woff2` wordt vóór `.otf` geprobeerd.
 
 ## Zolang LEMON MILK ontbreekt
 
-Dan valt de site terug op **Outfit**, een geometrische sans uit Google Fonts die
-er dicht bij ligt. De site oogt dan al helemaal juist; alleen de titels zijn nog
-niet 100 % merkgetrouw. Er breekt niets.
+Dan gebruiken de titels **Outfit**, een geometrische sans uit Google Fonts. Ik
+heb Outfit, Jost, Poppins, Montserrat en Archivo naast het specimen uit de
+styleguide gelegd; Outfit lag er het dichtst bij — zelfde spitse `A`, zelfde
+enkelvoudige ronde `a`, zelfde brede geometrie.
+
+De site oogt daarmee al helemaal juist. Alleen de titels zijn nog niet
+100 % merkgetrouw, en er breekt niets.
 
 De volgorde staat bovenaan `assets/css/style.css`:
 
