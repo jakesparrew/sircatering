@@ -7,50 +7,38 @@ De styleguide schrijft twee lettertypes voor: **LEMON MILK** voor de titels en
 
 Wordt geladen via Google Fonts. Je hoeft hier niets voor te doen.
 
-## LEMON MILK — dit moet jij aanleveren
+## LEMON MILK — staat erin
 
-LEMON MILK (van Marsnev) is **geen gratis lettertype voor websites**. Het is
-gratis voor persoonlijk gebruik, maar zodra het op een commerciële site staat
-is een licentie nodig. Daarom staat het bestand niet in deze repository: ik kan
-het niet voor je downloaden zonder die licentie.
-
-Waarschijnlijk heeft de ontwerper die het merk maakte de bestanden al — vraag
-ze daar eerst. Anders koop je ze bij de maker.
-
-### Zodra je de bestanden hebt
-
-Zet ze in **deze map**. Meer hoeft niet — de site pikt ze automatisch op.
+Versie 5.0 van Marsnev, vier gewichten × recht en cursief. Elk `.otf` is naast
+een `.woff2` gezet: die is ~38 % kleiner en wordt als eerste geprobeerd. De
+`.otf`'s blijven als origineel bewaard, maar gaan niet mee naar Vercel.
 
 ```
-fonts/
-├── LEMONMILK-Regular.otf
-├── LEMONMILK-RegularItalic.otf
-├── LEMONMILK-Bold.otf
-└── LEMONMILK-BoldItalic.otf
+LEMONMILK-Light        (300)   LEMONMILK-LightItalic
+LEMONMILK-Regular      (400)   LEMONMILK-RegularItalic
+LEMONMILK-Medium       (500)   LEMONMILK-MediumItalic
+LEMONMILK-Bold      (700–900)  LEMONMILK-BoldItalic
 ```
 
-`.ttf` werkt ook, en een paar andere veelgebruikte schrijfwijzen
-(`LemonMilk-Bold.otf`, `LemonMilkBold.otf`) worden eveneens herkend. Je hoeft
-dus meestal niets te hernoemen.
+### Twee dingen om te weten
 
-> **Let op:** op Vercel zijn bestandsnamen hoofdlettergevoelig, op Windows niet.
-> Werkt het lokaal wel en online niet, kijk dan eerst naar de hoofdletters.
+**1. Deze versie heeft geen kleine letters.** Een `a` toont als `A` — het is een
+all-caps lettertype. Dat is geen fout: LEMON MILK Pro (betalend) voegt de
+onderkast toe. Op de site is dit onzichtbaar, want overal waar LEMON MILK
+gebruikt wordt staat `text-transform: uppercase`.
 
-### Sneller maken (aanbevolen)
+> Gebruik dit lettertype dus **nooit** voor lopende tekst. Daar staat Poppins.
 
-`.otf` is fors; `.woff2` is ongeveer vier keer kleiner. Converteren kan gratis
-via <https://cloudconvert.com/otf-to-woff2>. Zet het resultaat er met dezelfde
-naam naast — `.woff2` wordt vóór `.otf` geprobeerd.
+**2. Commercieel gebruik vraagt een donatie.** `READ_ME.txt` van de maker zegt:
+gratis voor persoonlijk, educatief en non-profit gebruik; voor commercieel
+gebruik vraagt Marsnev een vrije bijdrage (marsnev@marsnev.com). Een
+cateringsite is commercieel, dus dat is iets om even te regelen.
 
-## Zolang LEMON MILK ontbreekt
+## Terugval
 
-Dan gebruiken de titels **Outfit**, een geometrische sans uit Google Fonts. Ik
-heb Outfit, Jost, Poppins, Montserrat en Archivo naast het specimen uit de
-styleguide gelegd; Outfit lag er het dichtst bij — zelfde spitse `A`, zelfde
-enkelvoudige ronde `a`, zelfde brede geometrie.
-
-De site oogt daarmee al helemaal juist. Alleen de titels zijn nog niet
-100 % merkgetrouw, en er breekt niets.
+Laadt LEMON MILK om een of andere reden niet, dan pakken de titels **Outfit**.
+Ik heb Outfit, Jost, Poppins, Montserrat en Archivo naast het specimen uit de
+styleguide gelegd; Outfit lag er het dichtst bij.
 
 De volgorde staat bovenaan `assets/css/style.css`:
 

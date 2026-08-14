@@ -9,17 +9,31 @@
    automatisch gebruikt. Zolang ze ontbreken valt de site netjes
    terug op Outfit — een geometrische sans die er dicht bij ligt.
    ------------------------------------------------------------ */
-/* Per stijl worden meerdere schrijfwijzen geprobeerd: de browser pakt de
-   eerste die bestaat. Zo werkt het bestand meteen, of het nu
-   LEMONMILK-Bold.otf of LemonMilk-Bold.ttf heet — dat scheelt hernoemen.
-   Let op: op Vercel zijn bestandsnamen hoofdlettergevoelig, op Windows niet. */
+/* LEMON MILK v5 (Marsnev) — donationware, zie fonts/READ_ME.txt.
+   Vier gewichten × recht/cursief. woff2 eerst, otf als achtervang.
+   Let op: deze gratis versie heeft GEEN kleine letters — 'a' toont als 'A'.
+   Gebruik dit lettertype dus alleen voor tekst in hoofdletters. Alle plekken
+   in deze stylesheet hebben text-transform: uppercase. */
+@font-face {
+  font-family: 'Lemon Milk';
+  src: url('../../fonts/LEMONMILK-Light.woff2') format('woff2'),
+       url('../../fonts/LEMONMILK-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lemon Milk';
+  src: url('../../fonts/LEMONMILK-LightItalic.woff2') format('woff2'),
+       url('../../fonts/LEMONMILK-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
 @font-face {
   font-family: 'Lemon Milk';
   src: url('../../fonts/LEMONMILK-Regular.woff2') format('woff2'),
-       url('../../fonts/LEMONMILK-Regular.otf') format('opentype'),
-       url('../../fonts/LEMONMILK-Regular.ttf') format('truetype'),
-       url('../../fonts/LemonMilk-Regular.otf') format('opentype'),
-       url('../../fonts/LemonMilkRegular.otf') format('opentype');
+       url('../../fonts/LEMONMILK-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -27,21 +41,31 @@
 @font-face {
   font-family: 'Lemon Milk';
   src: url('../../fonts/LEMONMILK-RegularItalic.woff2') format('woff2'),
-       url('../../fonts/LEMONMILK-RegularItalic.otf') format('opentype'),
-       url('../../fonts/LEMONMILK-RegularItalic.ttf') format('truetype'),
-       url('../../fonts/LEMONMILK-Italic.otf') format('opentype'),
-       url('../../fonts/LemonMilk-Italic.otf') format('opentype');
+       url('../../fonts/LEMONMILK-RegularItalic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Lemon Milk';
+  src: url('../../fonts/LEMONMILK-Medium.woff2') format('woff2'),
+       url('../../fonts/LEMONMILK-Medium.otf') format('opentype');
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lemon Milk';
+  src: url('../../fonts/LEMONMILK-MediumItalic.woff2') format('woff2'),
+       url('../../fonts/LEMONMILK-MediumItalic.otf') format('opentype');
+  font-weight: 500 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lemon Milk';
   src: url('../../fonts/LEMONMILK-Bold.woff2') format('woff2'),
-       url('../../fonts/LEMONMILK-Bold.otf') format('opentype'),
-       url('../../fonts/LEMONMILK-Bold.ttf') format('truetype'),
-       url('../../fonts/LemonMilk-Bold.otf') format('opentype'),
-       url('../../fonts/LemonMilkBold.otf') format('opentype');
+       url('../../fonts/LEMONMILK-Bold.otf') format('opentype');
   font-weight: 700 900;
   font-style: normal;
   font-display: swap;
@@ -49,10 +73,7 @@
 @font-face {
   font-family: 'Lemon Milk';
   src: url('../../fonts/LEMONMILK-BoldItalic.woff2') format('woff2'),
-       url('../../fonts/LEMONMILK-BoldItalic.otf') format('opentype'),
-       url('../../fonts/LEMONMILK-BoldItalic.ttf') format('truetype'),
-       url('../../fonts/LemonMilk-BoldItalic.otf') format('opentype'),
-       url('../../fonts/LemonMilkBoldItalic.otf') format('opentype');
+       url('../../fonts/LEMONMILK-BoldItalic.otf') format('opentype');
   font-weight: 700 900;
   font-style: italic;
   font-display: swap;
@@ -519,9 +540,10 @@ address { font-style: normal; }
   margin: 0;
   font-family: var(--font-display);
   font-weight: 900;
-  /* Ook op hoogte begrensd, anders groeit het woordmerk op een
-     landschap-telefoon buiten de viewport. */
-  font-size: min(clamp(4.5rem, 37vw, 36rem), 46svh);
+  /* Afgestemd op LEMON MILK, dat smaller loopt dan de terugvalletters: het
+     woordmerk beslaat zo dezelfde breedte als in de voorstelling.
+     De svh-grens houdt het binnen beeld op landschap-telefoons. */
+  font-size: min(clamp(4.5rem, 42vw, 40rem), 58svh);
   line-height: .85;
   letter-spacing: -.02em;
   color: var(--butter);
