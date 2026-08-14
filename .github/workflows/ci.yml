@@ -1,0 +1,27 @@
+# .github/workflows/ci.yml
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Entry point exists
+        run: test -f index.html && echo "index.html present"
+
+      - name: JS syntax
+        run: |
+          set -euo pipefail
+          find assets/js -name '*.js' -print0 | xargs -0 -r -n1 node --check
+          echo "JS syntax OK"
+
+      - name: Local references resolve
+        run: node .github/scripts/check-refs.mjs
