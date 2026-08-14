@@ -36,10 +36,13 @@ jobs:
           set -euo pipefail
           git config user.name  "jakesparrew"
           git config user.email "gaetanjansseune@gmail.com"
-          if git diff --quiet -- deploy.md; then
+          # Stage first, then compare against HEAD: a plain `git diff` reports
+          # no change while deploy.md is still untracked, which would skip the
+          # commit forever.
+          git add deploy.md
+          if git diff --cached --quiet -- deploy.md; then
             echo "No change in deploy.md, nothing to commit."
             exit 0
           fi
-          git add deploy.md
           git commit -m "chore(deploy): bump after @${{ github.actor }} push"
           git push origin HEAD:main
