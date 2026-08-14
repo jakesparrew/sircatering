@@ -957,9 +957,22 @@ address { font-style: normal; }
   color: #fff;
   text-shadow: 0 1px 10px rgba(0, 0, 0, .5);
 }
-.footer__contact a { text-decoration: none; transition: color .25s var(--ease); }
-.footer__contact a:hover { color: var(--butter); }
-.footer__contact span { color: rgba(255, 255, 255, .85); font-size: .9em; }
+/* Deze twee regels zijn de call-to-action van de pagina; ze moeten er
+   onmiskenbaar klikbaar uitzien, ook boven op een foto. */
+.footer__contact a {
+  display: inline-block;
+  padding: .2rem 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .35em;
+  text-decoration-color: rgba(253, 243, 160, .55);
+  transition: color .25s var(--ease), text-decoration-color .25s var(--ease);
+}
+.footer__contact a:hover,
+.footer__contact a:focus-visible {
+  color: var(--butter);
+  text-decoration-color: var(--butter);
+}
 
 .footer__legal {
   position: relative;
