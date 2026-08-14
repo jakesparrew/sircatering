@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIR. — Premium Event Catering</title>
+<meta name="description" content="Sir Catering — premium event catering uit Mariakerke. Van intiem diner tot trouwfeest of corporate event: gastronomie, service en beleving tot in de kleinste details.">
+<meta name="theme-color" content="#202020">
+<link rel="canonical" href="https://sircatering.be/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_BE">
+<meta property="og:site_name" content="SIR. Premium Event Catering">
+<meta property="og:title" content="SIR. — Premium Event Catering">
+<meta property="og:description" content="Van intiem diner tot trouwfeest of corporate event: gastronomie, service en beleving tot in de kleinste details.">
+<!-- Open Graph vereist absolute URL's — bij een andere domeinnaam ook deze aanpassen -->
+<meta property="og:url" content="https://sircatering.be/">
+<meta property="og:image" content="https://sircatering.be/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishment",
+  "additionalType": "https://schema.org/CateringService",
+  "name": "Sir Catering",
+  "alternateName": "SIR. Premium Event Catering",
+  "url": "https://sircatering.be/",
+  "email": "mail@sircatering.be",
+  "image": "https://sircatering.be/images/og-image.jpg",
+  "description": "Premium event catering uit Mariakerke. Van intiem diner tot trouwfeest of corporate event: gastronomie, service en beleving tot in de kleinste details.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Speistraat 43",
+    "postalCode": "9030",
+    "addressLocality": "Mariakerke",
+    "addressCountry": "BE"
+  },
+  "servesCuisine": "Seizoensgebonden gastronomie",
+  "areaServed": "BE"
+}
+</script>
+
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/img/icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Alleen de gewichten die de stylesheet echt gebruikt. Outfit 300 hoort erbij
+     ("Catering" in de hero); zonder die aanvraag valt hij terug op 400. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;800;900&family=Poppins:wght@400&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script>
+/* Staat bewust inline in de <head>:
+   1. markeert de pagina als "JS actief" (anders blijft alles zichtbaar);
+   2. vangt álle laadfouten van afbeeldingen op, ook die vóór main.js. */
+document.documentElement.classList.add('js');
+document.addEventListener('error', function (e) {
+  var el = e.target;
+  if (el && el.tagName === 'IMG') { el.setAttribute('data-missing', ''); }
+}, true);
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#about">Naar de inhoud</a>
+
+<!-- ============================================================
+     STICKY HEADER — verschijnt zodra je voorbij de hero scrolt
+     ============================================================ -->
+<header class="site-header" id="site-header">
+  <a class="site-header__logo" href="#top" aria-label="SIR. — naar boven">SIR.</a>
+
+  <nav class="site-header__nav" aria-label="Hoofdnavigatie">
+    <a href="#about">About</a>
+    <a href="#sirvice">Sir<em>vice</em></a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button class="burger" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="site-menu">
+    <span aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+</header>
+
+<!-- ============================================================
+     OVERLAY MENU
+     ============================================================ -->
+<div class="menu" id="site-menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="menu__close" type="button" aria-label="Menu sluiten" aria-expanded="false" aria-controls="site-menu">
+    <span aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+  <div class="menu__inner">
+    <nav class="menu__nav" aria-label="Menu">
+      <a href="#about"><span>01</span>About</a>
+      <a href="#sirvice"><span>02</span>Sir<em>vice</em></a>
+      <a href="#food"><span>03</span>Food</a>
+      <a href="#moments"><span>04</span>Moments</a>
+      <a href="#contact"><span>05</span>Contact</a>
+    </nav>
+    <div class="menu__meta">
+      <p><a href="mailto:mail@sircatering.be">mail@sircatering.be</a></p>
+      <p>Speistraat 43<br>9030 Mariakerke</p>
+      <!-- TODO: vul hieronder het juiste Instagram-profiel in -->
+      <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============================================================
+       1. HERO
+       ============================================================ -->
+  <section class="hero" aria-label="SIR. Premium Event Catering">
+    <div class="hero__media ph ph--hero" data-label="HERO" data-size="2400 × 1600">
+      <img src="images/hero.jpg" alt="" fetchpriority="high" decoding="async">
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="hero__top">
+      <!-- TODO: vul het juiste Instagram-profiel in -->
+      <a class="hero__link" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a class="hero__link" href="#contact">Contact</a>
+    </div>
+
+    <div class="hero__center">
+      <!-- aria-label op de h1 zelf: anders zou de knoplabel ("Menu openen")
+           mee in de naam van de hoofdtitel belanden. -->
+      <h1 class="hero__wordmark" aria-label="SIR. Premium Event Catering">
+        <span class="hero__sir">SIR</span><!--
+     --><button class="hero__dot" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="site-menu">
+          <span aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </h1>
+      <p class="hero__tagline"><strong>Premium Event</strong><span>Catering</span></p>
+    </div>
+
+    <p class="hero__address">Speistraat 43&nbsp;&nbsp;9030 Mariakerke</p>
+
+    <a class="hero__scroll" href="#about" aria-label="Scroll naar About"><span aria-hidden="true"></span></a>
+  </section>
+
+  <!-- ============================================================
+       2. ABOUT — tekst links, carrousel rechts
+       ============================================================ -->
+  <section class="split" id="about">
+    <div class="split__text reveal">
+      <div class="split__card">
+        <span class="quote-mark" aria-hidden="true">&rdquo;</span>
+        <h2 class="section-title">About</h2>
+        <p>Bij Sir Catering draait alles om goed eten, sterke service en een totaalbeleving die klopt tot in de details. Van intieme trouwfeesten tot grote bedrijfsevents: we werken alles uit op maat, met seizoensproducten, een passie voor gastronomie en een team dat altijd nét dat tikkeltje verder gaat.</p>
+      </div>
+    </div>
+
+    <!-- Carrousel: voeg een slide toe door één .carousel__slide te kopiëren -->
+    <div class="split__media">
+      <div class="carousel" role="group" data-carousel aria-roledescription="carrousel" aria-label="Beelden bij About">
+        <div class="carousel__viewport">
+          <ul class="carousel__track">
+            <li class="carousel__slide ph" data-label="ABOUT 01" data-size="1400 × 1800"><img src="images/about-1.jpg" alt="Het team van Sir Catering aan het werk" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="ABOUT 02" data-size="1400 × 1800"><img src="images/about-2.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="ABOUT 03" data-size="1400 × 1800"><img src="images/about-3.jpg" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+        <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Vorige foto"></button>
+        <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Volgende foto"></button>
+        <div class="carousel__dots"></div>
+        <p class="carousel__status visually-hidden" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. QUOTE — volledige breedte
+       ============================================================ -->
+  <section class="quote" aria-label="Quote">
+    <div class="quote__media ph ph--hero" data-label="QUOTE" data-size="2400 × 1600">
+      <img src="images/quote.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="quote__scrim" aria-hidden="true"></div>
+    <!-- De gele lijn staat in dezelfde grid-kolom als de quote; de
+         onderbreking volgt daardoor automatisch de hoogte van de tekst. -->
+    <span class="quote__rule quote__rule--top" aria-hidden="true"></span>
+    <blockquote class="quote__body reveal">
+      <!-- TODO: vervang door de definitieve quote -->
+      <p>Jullie verhaal, onze gastronomie.</p>
+      <cite>SIR.</cite>
+    </blockquote>
+    <span class="quote__rule quote__rule--bottom" aria-hidden="true"></span>
+  </section>
+
+  <!-- ============================================================
+       4. SIRVICE — carrousel links, tekst rechts
+       ============================================================ -->
+  <section class="split split--reverse" id="sirvice">
+    <div class="split__media">
+      <div class="carousel" role="group" data-carousel aria-roledescription="carrousel" aria-label="Beelden bij Sirvice">
+        <div class="carousel__viewport">
+          <ul class="carousel__track">
+            <li class="carousel__slide ph" data-label="SIRVICE 01" data-size="1400 × 1800"><img src="images/sirvice-1.jpg" alt="Service tijdens een event van Sir Catering" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="SIRVICE 02" data-size="1400 × 1800"><img src="images/sirvice-2.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="SIRVICE 03" data-size="1400 × 1800"><img src="images/sirvice-3.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="SIRVICE 04" data-size="1400 × 1800"><img src="images/sirvice-4.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="SIRVICE 05" data-size="1400 × 1800"><img src="images/sirvice-5.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="SIRVICE 06" data-size="1400 × 1800"><img src="images/sirvice-6.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="SIRVICE 07" data-size="1400 × 1800"><img src="images/sirvice-7.jpg" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+        <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Vorige foto"></button>
+        <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Volgende foto"></button>
+        <div class="carousel__dots"></div>
+        <p class="carousel__status visually-hidden" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div class="split__text split__text--end reveal">
+      <div class="split__card">
+        <span class="quote-mark" aria-hidden="true">&rdquo;</span>
+        <h2 class="section-title">Sir<em>vice</em></h2>
+        <p>Van intiem diner tot trouwfeest of corporate event, wij zorgen voor een totaalervaring die klopt van begin tot einde.</p>
+        <p>Jullie genieten van het moment, wij zorgen voor de gastronomie, service en beleving. Tot in de kleinste details.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. FOOD — tekst links (rechts uitgelijnd), carrousel rechts
+       ============================================================ -->
+  <section class="split" id="food">
+    <div class="split__text split__text--end reveal">
+      <div class="split__card">
+        <span class="quote-mark" aria-hidden="true">&rdquo;</span>
+        <h2 class="section-title">Food</h2>
+        <p>Geen standaardmenu's, wel gerechten die passen bij jullie verhaal. Met de mooiste seizoensproducten creëren we samen een menu dat helemaal klopt.</p>
+      </div>
+    </div>
+
+    <div class="split__media">
+      <div class="carousel" role="group" data-carousel aria-roledescription="carrousel" aria-label="Beelden bij Food">
+        <div class="carousel__viewport">
+          <ul class="carousel__track">
+            <li class="carousel__slide ph" data-label="FOOD 01" data-size="1400 × 1800"><img src="images/food-1.jpg" alt="Gerecht van Sir Catering" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 02" data-size="1400 × 1800"><img src="images/food-2.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 03" data-size="1400 × 1800"><img src="images/food-3.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 04" data-size="1400 × 1800"><img src="images/food-4.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 05" data-size="1400 × 1800"><img src="images/food-5.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 06" data-size="1400 × 1800"><img src="images/food-6.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 07" data-size="1400 × 1800"><img src="images/food-7.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 08" data-size="1400 × 1800"><img src="images/food-8.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 09" data-size="1400 × 1800"><img src="images/food-9.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 10" data-size="1400 × 1800"><img src="images/food-10.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 11" data-size="1400 × 1800"><img src="images/food-11.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 12" data-size="1400 × 1800"><img src="images/food-12.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 13" data-size="1400 × 1800"><img src="images/food-13.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="FOOD 14" data-size="1400 × 1800"><img src="images/food-14.jpg" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+        <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Vorige foto"></button>
+        <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Volgende foto"></button>
+        <div class="carousel__dots"></div>
+        <p class="carousel__status visually-hidden" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. MOMENTS — carrousel links, tekst rechts
+       ============================================================ -->
+  <section class="split split--reverse" id="moments">
+    <div class="split__media">
+      <div class="carousel" role="group" data-carousel aria-roledescription="carrousel" aria-label="Beelden bij Moments">
+        <div class="carousel__viewport">
+          <ul class="carousel__track">
+            <li class="carousel__slide ph" data-label="MOMENTS 01" data-size="1400 × 1800"><img src="images/moments-1.jpg" alt="Een event verzorgd door Sir Catering" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="MOMENTS 02" data-size="1400 × 1800"><img src="images/moments-2.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="MOMENTS 03" data-size="1400 × 1800"><img src="images/moments-3.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="MOMENTS 04" data-size="1400 × 1800"><img src="images/moments-4.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="MOMENTS 05" data-size="1400 × 1800"><img src="images/moments-5.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="MOMENTS 06" data-size="1400 × 1800"><img src="images/moments-6.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li class="carousel__slide ph" data-label="MOMENTS 07" data-size="1400 × 1800"><img src="images/moments-7.jpg" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+        <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Vorige foto"></button>
+        <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Volgende foto"></button>
+        <div class="carousel__dots"></div>
+        <p class="carousel__status visually-hidden" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div class="split__text split__text--end reveal">
+      <div class="split__card">
+        <span class="quote-mark" aria-hidden="true">&rdquo;</span>
+        <h2 class="section-title">Moments</h2>
+        <p>Bij Sir Catering geloven we dat de mooiste momenten ontstaan wanneer goed eten, fijne mensen en de juiste sfeer samenkomen. Daarom creëren we elke beleving volledig op maat, afgestemd op jullie verhaal en wensen.</p>
+        <p>De beelden hiernaast geven een inkijk in enkele momenten die we de voorbije jaren mochten creëren. Verschillende locaties, verschillende verhalen, maar altijd met dezelfde passie voor gastronomie, gastvrijheid en beleving.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. CONTACT & BOOKING
+       ============================================================ -->
+  <section class="booking" id="contact">
+    <div class="booking__media ph ph--hero" data-label="CONTACT" data-size="2400 × 1600">
+      <img src="images/contact.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="booking__scrim" aria-hidden="true"></div>
+
+    <div class="booking__inner">
+      <h2 class="booking__title reveal">Contact <span>&amp;</span> <em>Booking</em></h2>
+
+      <ol class="booking__steps">
+        <li class="booking__step reveal">
+          <span class="booking__num">1.</span>
+          <h3>Get in touch</h3>
+          <p>Stuur ons een mailtje. Vanaf dat eerste contact plannen we een vrijblijvende kennismaking in en luisteren we graag naar jullie verhaal.</p>
+        </li>
+        <li class="booking__step reveal">
+          <span class="booking__num">2.</span>
+          <h3>Let's meet</h3>
+          <p>Tijdens een gesprek – online of bij ons aan tafel – overlopen we jullie plannen, ideeën en wensen. Zo krijgen we een duidelijk beeld van jullie event en werken we een voorstel volledig op maat uit.</p>
+        </li>
+        <li class="booking__step reveal">
+          <span class="booking__num">3.</span>
+          <h3>Sit back &amp; enjoy</h3>
+          <p>Zijn jullie overtuigd? Dan nemen wij het vanaf daar over. We werken alles tot in de kleinste details uit, begeleiden jullie doorheen het hele traject en zorgen ervoor dat jullie zorgeloos kunnen uitkijken naar een event dat helemaal klopt.</p>
+        </li>
+      </ol>
+
+      <p class="booking__cta reveal">
+        <a class="btn" href="mailto:mail@sircatering.be?subject=Aanvraag%20via%20sircatering.be">Stuur ons een mailtje</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     8. FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer__media ph ph--hero" data-label="FOOTER" data-size="2400 × 1600">
+    <img src="images/footer.jpg" alt="" loading="lazy" decoding="async">
+  </div>
+  <div class="footer__scrim" aria-hidden="true"></div>
+  <div class="footer__shapes" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <div class="footer__inner">
+    <p class="footer__kicker">What's on the menu?</p>
+    <p class="footer__wordmark"><span>Sir</span> <span>Yes</span> <span>Sir</span></p>
+
+    <address class="footer__contact">
+      <a href="https://sircatering.be">sircatering.be</a>
+      <a href="mailto:mail@sircatering.be">mail@sircatering.be</a>
+      <span>Speistraat 43, 9030 Mariakerke</span>
+    </address>
+  </div>
+
+  <p class="footer__legal">
+    <span>&copy; <span data-year>2026</span> Sir Catering</span>
+    <!-- TODO: vul het juiste Instagram-profiel in -->
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+  </p>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

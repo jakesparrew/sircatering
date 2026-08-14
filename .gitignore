@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Originele foto's (198 MB PNG) — de geoptimaliseerde JPG's in images/ zijn wat de site gebruikt
+images/FOTO's WEBSITE SIR/
