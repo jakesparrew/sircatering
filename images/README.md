@@ -10,7 +10,7 @@ er eentje vervangt of bijzet.
 | `hero.jpg` | Openingsscherm | `sirvice2.png` |
 | `quote.jpg` | Quote-sectie | `about3.png` |
 | `contact.jpg` | Contact & Booking | `moments5.png` |
-| `footer.jpg` | Afsluiter "Sir Yes Sir" | `sirvice6.png` |
+| `footer.jpg` | Afsluiter "Sir Yes Sir" | bruidspaar uit `design/SIR WEBSITE VOORSTELLING.pdf` |
 | `about-1` … `about-3` | About-carrousel | `about1-3.png` |
 | `sirvice-1` … `sirvice-7` | Sirvice-carrousel | `sirvice.png`, `sirvice1-6.png` |
 | `food-1` … `food-14` | Food-carrousel | `food1-14.png` |

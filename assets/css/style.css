@@ -998,7 +998,13 @@ address { font-style: normal; }
 
 .footer__inner { position: relative; z-index: 3; flex: 1; display: flex; flex-direction: column; }
 
+/* De kicker hoort gecentreerd boven het wordmark-blok. Deze wrapper is
+   precies zo breed als dat blok, zodat centreren daarop uitlijnt en niet
+   op de volle paginabreedte. */
+.footer__lede { width: fit-content; }
+
 .footer__kicker {
+  text-align: center;
   font-family: var(--font-display);
   font-size: clamp(.85rem, .7rem + .5vw, 1.35rem);
   letter-spacing: .06em;
