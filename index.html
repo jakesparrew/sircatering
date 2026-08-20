@@ -105,8 +105,9 @@ document.addEventListener('error', function (e) {
       <a href="#about"><span>01</span>About</a>
       <a href="#sirvice"><span>02</span>Sir<em>vice</em></a>
       <a href="#food"><span>03</span>Food</a>
-      <a href="#moments"><span>04</span>Moments</a>
-      <a href="#contact"><span>05</span>Contact</a>
+      <a href="#contact"><span>04</span>Contact</a>
+      <a href="#moments"><span>05</span>Moments</a>
+      <a href="#reviews"><span>06</span>Reviews</a>
     </nav>
     <div class="menu__meta">
       <p><a href="mailto:mail@sircatering.be">mail@sircatering.be</a></p>
@@ -121,13 +122,9 @@ document.addEventListener('error', function (e) {
   <!-- ============================================================
        1. HERO
        ============================================================ -->
-  <section class="hero" aria-label="SIR. Premium Event Catering">
-    <!-- Deze beelden vervagen in elkaar. Een vierde toevoegen = één regel
-         erbij; de JavaScript leest het aantal zelf uit. -->
-    <div class="hero__media ph ph--hero" data-label="HERO" data-size="1890 × 1418" data-crossfade>
+  <section class="hero" id="hero" aria-label="SIR. Premium Event Catering">
+    <div class="hero__media ph ph--hero ph--color" data-label="HERO" data-size="2000 × 1414">
       <img src="images/hero.jpg" alt="" fetchpriority="high" decoding="async">
-      <img src="images/hero-2.jpg" alt="" loading="lazy" decoding="async">
-      <img src="images/hero-3.jpg" alt="" loading="lazy" decoding="async">
     </div>
     <div class="hero__scrim" aria-hidden="true"></div>
 
@@ -159,9 +156,12 @@ document.addEventListener('error', function (e) {
   <section class="split" id="about">
     <div class="split__text reveal">
       <div class="split__card">
-        <span class="quote-mark" aria-hidden="true">&rdquo;</span>
+        <span class="quote-mark quote-mark--open" aria-hidden="true"></span>
         <h2 class="section-title">About</h2>
-        <p>Bij Sir Catering draait alles om goed eten, sterke service en een totaalbeleving die klopt tot in de details. Van intieme trouwfeesten tot grote bedrijfsevents: we werken alles uit op maat, met seizoensproducten, een passie voor gastronomie en een team dat altijd nét dat tikkeltje verder gaat.</p>
+        <p>Bij SIR Catering draait alles om goed eten, sterke service en een totaalbeleving die klopt. Van intieme trouwfeesten tot grote bedrijfsevents, altijd met dezelfde aandacht voor detail.</p>
+        <p>We werken persoonlijk en volledig op maat. Een eigen idee, specifieke request of iets dat absoluut niet mag ontbreken? We luisteren, denken mee en maken het mogelijk.</p>
+        <p>Onze chefs koken met de seizoenen mee en blijven spelen met smaken, kleuren en nieuwe ideeën. Gastronomie staat centraal, gedragen door een team dat nét dat tikkeltje verder gaat.</p>
+        <p>Plannen?<br>Bel ons of <a class="text-link" href="mailto:mail@sircatering.be">stuur een mailtje</a>.</p>
       </div>
     </div>
 
@@ -184,22 +184,19 @@ document.addEventListener('error', function (e) {
   </section>
 
   <!-- ============================================================
-       3. QUOTE — volledige breedte
+       3. QUOTE — volvlak-beeld met korte uitspraak
        ============================================================ -->
   <section class="quote" aria-label="Quote">
-    <div class="quote__media ph ph--hero" data-label="QUOTE" data-size="2400 × 1600">
+    <div class="quote__media ph ph--hero" data-label="QUOTE" data-size="1890 × 1418">
       <img src="images/quote.jpg" alt="" loading="lazy" decoding="async">
     </div>
     <div class="quote__scrim" aria-hidden="true"></div>
-    <!-- De gele lijn staat in dezelfde grid-kolom als de quote; de
-         onderbreking volgt daardoor automatisch de hoogte van de tekst. -->
-    <span class="quote__rule quote__rule--top" aria-hidden="true"></span>
     <blockquote class="quote__body reveal">
-      <!-- TODO: vervang door de definitieve quote -->
-      <p>Jullie verhaal, onze gastronomie.</p>
-      <cite>SIR.</cite>
+      <span class="quote-mark quote-mark--open quote-mark--butter" aria-hidden="true"></span>
+      <p>Jullie verhaal,<br>onze gastronomie</p>
     </blockquote>
-    <span class="quote__rule quote__rule--bottom" aria-hidden="true"></span>
+    <span class="quote__sir" aria-hidden="true">SIR.</span>
+    <p class="photo-credit"><strong>Fotografie</strong> Chess bonte</p>
   </section>
 
   <!-- ============================================================
@@ -228,10 +225,12 @@ document.addEventListener('error', function (e) {
 
     <div class="split__text split__text--end reveal">
       <div class="split__card">
-        <span class="quote-mark" aria-hidden="true">&rdquo;</span>
+        <span class="quote-mark quote-mark--close" aria-hidden="true"></span>
         <h2 class="section-title">Sir<em>vice</em></h2>
-        <p>Van intiem diner tot trouwfeest of corporate event, wij zorgen voor een totaalervaring die klopt van begin tot einde.</p>
-        <p>Jullie genieten van het moment, wij zorgen voor de gastronomie, service en beleving. Tot in de kleinste details.</p>
+        <p>Van een intiem diner en trouwfeest tot een grootschalig corporate event: wij zorgen voor een totaalervaring van begin tot einde.</p>
+        <p>Bij SIR gaat service verder dan alleen goed eten serveren. We denken mee, spelen in op jullie wensen en zorgen dat alles op het juiste moment op de juiste plaats staat.</p>
+        <p>Van de eerste ontvangst tot het laatste glas: ons team houdt het overzicht, voelt aan wat nodig is en zorgt ervoor dat alles vlot verloopt. Jullie genieten van het moment en jullie gasten. Wij zorgen voor de gastronomie en hospitality.</p>
+        <p class="split__tagline">Dat is onze SIR<em>VICE</em>.</p>
       </div>
     </div>
   </section>
@@ -240,11 +239,14 @@ document.addEventListener('error', function (e) {
        5. FOOD — tekst links (rechts uitgelijnd), carrousel rechts
        ============================================================ -->
   <section class="split" id="food">
-    <div class="split__text split__text--end reveal">
+    <div class="split__text reveal">
       <div class="split__card">
-        <span class="quote-mark" aria-hidden="true">&rdquo;</span>
+        <span class="quote-mark quote-mark--open" aria-hidden="true"></span>
         <h2 class="section-title">Food</h2>
-        <p>Geen standaardmenu's, wel gerechten die passen bij jullie verhaal. Met de mooiste seizoensproducten creëren we samen een menu dat helemaal klopt.</p>
+        <p>Bij SIR begint alles bij het product. Kwaliteitsingrediënten, pure smaken en gerechten die met zorg worden opgebouwd.</p>
+        <p>Onze keuken volgt het ritme van de seizoenen en laat zo elk ingrediënt spreken.</p>
+        <p>We houden van verfijnde gerechten zonder onnodige complexiteit. Herkenbare smaken krijgen een frisse SIR-twist, klassiekers worden net even anders gebracht en kleur mag altijd mee op het bord.</p>
+        <p>Van recepties met table food en appetizers tot walking dinners en uitgebreide seated dinners. Elke formule krijgt dezelfde culinaire aandacht. Een menu met balans, variatie en vooral gerechten waar je naar uitkijkt.</p>
       </div>
     </div>
 
@@ -277,7 +279,44 @@ document.addEventListener('error', function (e) {
   </section>
 
   <!-- ============================================================
-       6. MOMENTS — carrousel links, tekst rechts
+       6. CONTACT & BOOKING — over de Porsche, zoals in de voorstelling
+       ============================================================ -->
+  <section class="booking" id="contact">
+    <div class="booking__media ph ph--hero" data-label="CONTACT" data-size="1890 × 1418">
+      <img src="images/contact.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="booking__scrim" aria-hidden="true"></div>
+
+    <div class="booking__inner">
+      <h2 class="booking__title reveal">Contact <span>&amp;</span> <em>Booking</em></h2>
+
+      <ol class="booking__steps">
+        <li class="booking__step reveal">
+          <span class="booking__num">1.</span>
+          <h3>Get in touch</h3>
+          <p>Stuur ons een mailtje. Na ons eerste contact plannen we een vrijblijvende kennismaking in en luisteren we graag naar jullie verhaal.</p>
+        </li>
+        <li class="booking__step reveal">
+          <span class="booking__num">2.</span>
+          <h3>Let's meet</h3>
+          <p>Tijdens een gesprek overlopen we jullie plannen, ideeën en wensen. Zo krijgen we een duidelijk beeld van jullie event en werken we een voorstel volledig uit op maat.</p>
+        </li>
+        <li class="booking__step reveal">
+          <span class="booking__num">3.</span>
+          <h3>Sit back &amp; enjoy</h3>
+          <p>Zijn jullie overtuigd? Dan nemen wij het vanaf daar over. Samen met de juiste partners begeleiden we jullie doorheen het hele traject en zorgen ervoor dat jullie zorgeloos kunnen uitkijken naar een event dat helemaal klopt.</p>
+        </li>
+      </ol>
+
+      <p class="booking__cta reveal">
+        <a class="btn" href="mailto:mail@sircatering.be?subject=Tell%20us%20your%20plans!">Tell us your plans!</a>
+      </p>
+    </div>
+    <p class="photo-credit"><strong>Fotografie</strong> Chess bonte</p>
+  </section>
+
+  <!-- ============================================================
+       7. MOMENTS — carrousel links, tekst rechts
        ============================================================ -->
   <section class="split split--reverse" id="moments">
     <div class="split__media">
@@ -302,48 +341,48 @@ document.addEventListener('error', function (e) {
 
     <div class="split__text split__text--end reveal">
       <div class="split__card">
-        <span class="quote-mark" aria-hidden="true">&rdquo;</span>
+        <span class="quote-mark quote-mark--close" aria-hidden="true"></span>
         <h2 class="section-title">Moments</h2>
-        <p>Bij Sir Catering geloven we dat de mooiste momenten ontstaan wanneer goed eten, fijne mensen en de juiste sfeer samenkomen. Daarom creëren we elke beleving volledig op maat, afgestemd op jullie verhaal en wensen.</p>
-        <p>De beelden hiernaast geven een inkijk in enkele momenten die we de voorbije jaren mochten creëren. Verschillende locaties, verschillende verhalen, maar altijd met dezelfde passie voor gastronomie, gastvrijheid en beleving.</p>
+        <p>Geen twee events zijn hetzelfde. Andere mensen, andere locaties, andere verhalen en net dat maakt elk moment bijzonder.</p>
+        <p>Hiernaast blikken we terug op enkele events die we de voorbije jaren mochten verzorgen. Van intieme settings tot grootse feesten, elk met een eigen karakter en herinneringen waar we met veel plezier op terugkijken.</p>
+        <p class="split__tagline">Enjoy a little taste of what we've been up to.</p>
       </div>
     </div>
   </section>
 
+
   <!-- ============================================================
-       7. CONTACT & BOOKING
+       8. REVIEWS — "We Served. They Approved."
+       Eén review tegelijk; het pijltje bladert verder.
        ============================================================ -->
-  <section class="booking" id="contact">
-    <div class="booking__media ph ph--hero" data-label="CONTACT" data-size="2400 × 1600">
-      <img src="images/contact.jpg" alt="" loading="lazy" decoding="async">
+  <section class="reviews" id="reviews" aria-label="Reviews">
+    <div class="reviews__media ph ph--hero ph--color" data-label="REVIEWS" data-size="1890 × 1418">
+      <img src="images/reviews.jpg" alt="" loading="lazy" decoding="async">
     </div>
-    <div class="booking__scrim" aria-hidden="true"></div>
+    <div class="reviews__scrim" aria-hidden="true"></div>
+    <span class="shield-overlay" aria-hidden="true"></span>
 
-    <div class="booking__inner">
-      <h2 class="booking__title reveal">Contact <span>&amp;</span> <em>Booking</em></h2>
-
-      <ol class="booking__steps">
-        <li class="booking__step reveal">
-          <span class="booking__num">1.</span>
-          <h3>Get in touch</h3>
-          <p>Stuur ons een mailtje. Vanaf dat eerste contact plannen we een vrijblijvende kennismaking in en luisteren we graag naar jullie verhaal.</p>
-        </li>
-        <li class="booking__step reveal">
-          <span class="booking__num">2.</span>
-          <h3>Let's meet</h3>
-          <p>Tijdens een gesprek – online of bij ons aan tafel – overlopen we jullie plannen, ideeën en wensen. Zo krijgen we een duidelijk beeld van jullie event en werken we een voorstel volledig op maat uit.</p>
-        </li>
-        <li class="booking__step reveal">
-          <span class="booking__num">3.</span>
-          <h3>Sit back &amp; enjoy</h3>
-          <p>Zijn jullie overtuigd? Dan nemen wij het vanaf daar over. We werken alles tot in de kleinste details uit, begeleiden jullie doorheen het hele traject en zorgen ervoor dat jullie zorgeloos kunnen uitkijken naar een event dat helemaal klopt.</p>
-        </li>
-      </ol>
-
-      <p class="booking__cta reveal">
-        <a class="btn" href="mailto:mail@sircatering.be?subject=Aanvraag%20via%20sircatering.be">Stuur ons een mailtje</a>
-      </p>
+    <div class="reviews__lede reveal">
+      <p class="reviews__kicker">Reviews</p>
+      <h2>We Served. They Approved.</h2>
     </div>
+
+    <div class="reviews__panel">
+      <div class="reviews__quote" data-reviews>
+        <span class="quote-mark quote-mark--close quote-mark--butter" aria-hidden="true"></span>
+        <div class="reviews__viewport" aria-live="polite">
+          <!-- Een review toevoegen = één <blockquote> erbij; de JavaScript telt zelf. -->
+          <blockquote class="is-active"><p>Dank u aan het voltallig team voor de ongelooflijke service! Iedereen was super tevreden!</p></blockquote>
+          <blockquote><p>We zijn super tevreden dat we met jullie hebben samengewerkt! Vanaf ons eerste contact, tot de wijnproeving en de bruidstaart, alles was tiptop! Letterlijk alle gasten spraken ons aan over het eten en de bediening omdat het zo in orde was.</p></blockquote>
+          <blockquote><p>Het was super lekker en dat compliment hebben we van iedereen gehoord. Vooral de hapjes vielen heel erg in de smaak. Het volledige team was zeer attent, wat enorm geapprecieerd werd.</p></blockquote>
+          <blockquote><p>Heel hard genoten en alleen maar lof over de cateraar.</p></blockquote>
+          <blockquote><p>Graag wil ik jullie feliciteren met jullie pico-bello verzorging van ons feest. De gasten mochten genieten van een heerlijk en fijn walking dinner. Ook een pluim naar al jullie medewerkers: ze waren allen heel vriendelijk, behulpzaam, en stuk voor stuk mooie mensen. Alles liep op rolletjes.</p></blockquote>
+        </div>
+      </div>
+      <button class="reviews__next" type="button" aria-label="Volgende review"></button>
+    </div>
+
+    <span class="reviews__sir" aria-hidden="true">SIR.</span>
   </section>
 
 </main>
@@ -356,7 +395,7 @@ document.addEventListener('error', function (e) {
     <img src="images/footer.jpg" alt="" loading="lazy" decoding="async">
   </div>
   <div class="footer__scrim" aria-hidden="true"></div>
-  <div class="footer__shapes" aria-hidden="true"><span></span><span></span><span></span></div>
+  <span class="shield-overlay" aria-hidden="true"></span>
 
   <div class="footer__inner">
     <div class="footer__lede">
@@ -365,8 +404,8 @@ document.addEventListener('error', function (e) {
     </div>
 
     <address class="footer__contact">
-      <a href="https://sircatering.be">sircatering.be</a>
-      <a href="mailto:mail@sircatering.be?subject=Aanvraag%20via%20sircatering.be">mail@sircatering.be</a>
+      <a href="mailto:mail@sircatering.be">mail@sircatering.be</a>
+      <a href="https://www.instagram.com/sircatering" target="_blank" rel="noopener">instagram &lsquo;sircatering&rsquo;</a>
     </address>
   </div>
 
