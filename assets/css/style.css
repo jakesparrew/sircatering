@@ -181,7 +181,12 @@ address { font-style: normal; }
   margin-bottom: 1.25rem;
 }
 /* De eerste letter van elke titel staat cursief, zoals in de voorstelling. */
-.section-title::first-letter { font-style: italic; }
+.section-title::first-letter,
+.booking__title::first-letter,
+.booking__step h3::first-letter,
+.reviews__lede h2::first-letter,
+.footer__kicker::first-letter,
+.quote__body p::first-letter { font-style: italic; }
 
 /* "SIRVICE" hoort als één woord te lezen; de cursieve helft krijgt
    daarom iets negatieve ruimte terug — anders duwt de schuinstand ze los. */
@@ -519,11 +524,11 @@ address { font-style: normal; }
   position: absolute;
   inset: 0;
   z-index: 2;
-  /* Iets zwaarder aan de randen: de hero wisselt tussen beelden met heel
-     verschillende helderheid — de duinfoto heeft een lichte lucht waar de
-     witte links anders wegvallen. */
+  /* Licht gehouden: de hero is nu één vast beeld met een diep rode
+     achtergrond, dus de witte tekst staat er al contrastrijk op. Alleen de
+     randen krijgen een vleugje diepte. */
   background:
-    linear-gradient(180deg, rgba(32,32,32,.66) 0%, rgba(32,32,32,.18) 26%, rgba(32,32,32,.22) 58%, rgba(32,32,32,.66) 100%);
+    linear-gradient(180deg, rgba(32,32,32,.22) 0%, rgba(32,32,32,.04) 24%, rgba(32,32,32,.04) 72%, rgba(32,32,32,.30) 100%);
 }
 .hero > *:not(.hero__media):not(.hero__scrim) { position: relative; z-index: 3; }
 
@@ -546,6 +551,9 @@ address { font-style: normal; }
 .hero__link:hover { color: var(--butter); }
 
 .hero__center {
+  /* De maat van het woordmerk staat hier, zodat de tagline er exact op kan
+     uitlijnen zonder te gokken. */
+  --wm: min(clamp(4.5rem, 42vw, 40rem), 58svh);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -565,45 +573,44 @@ address { font-style: normal; }
   /* Afgestemd op LEMON MILK, dat smaller loopt dan de terugvalletters: het
      woordmerk beslaat zo dezelfde breedte als in de voorstelling.
      De svh-grens houdt het binnen beeld op landschap-telefoons. */
-  font-size: min(clamp(4.5rem, 42vw, 40rem), 58svh);
+  font-size: var(--wm);
   line-height: .85;
   letter-spacing: -.02em;
   color: var(--butter);
 }
 .hero__sir { display: block; }
 
-/* De punt van "SIR." is tegelijk de menuknop */
+/* De punt van "SIR." is tegelijk de menuknop. Opgemeten in de voorstelling:
+   diameter 0,143 x de kaphoogte en het hart 0,28 kaphoogte boven de
+   basislijn — omgerekend met de kaphoogte van LEMON MILK (0,8125 em).
+   De streepjes zijn UITGESPAARD: het masker snijdt ze uit de bol, zodat de
+   achtergrond erdoorheen komt in plaats van donkere balkjes. */
 .hero__dot {
   position: relative;
   flex: none;
-  display: grid;
-  place-items: center;
-  width: .21em; height: .21em;
-  margin-bottom: .035em;
+  display: block;
+  width: .116em; height: .116em;
+  margin-bottom: .170em;
   padding: 0;
-  border-radius: 50%;
   background: var(--butter);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill-rule='evenodd' d='M50 0a50 50 0 1 0 .1 0zM27 33h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9zm0 13h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9zm0 13h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9z'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill-rule='evenodd' d='M50 0a50 50 0 1 0 .1 0zM27 33h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9zm0 13h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9zm0 13h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9z'/%3E%3C/svg%3E") no-repeat center / contain;
   transition: transform .3s var(--ease);
 }
-.hero__dot:hover { transform: scale(1.06); }
-.hero__dot > span {
-  display: grid;
-  gap: .022em;
-  width: .1em;
-}
-.hero__dot i {
-  display: block;
-  height: .016em;
-  min-height: 2px;
-  border-radius: .01em;
-  background: var(--charcoal);
-  transition: transform .3s var(--ease), opacity .2s var(--ease);
-}
+.hero__dot:hover { transform: scale(1.08); }
+/* De balkjes zitten in het masker; het span is er nog voor schermlezers. */
+.hero__dot > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 
 .hero__tagline {
   display: flex;
   flex-direction: column;
-  margin-left: 17%;
+  /* Rechts uitgelijnd op de rechterrand van "SIR", dus de breedte van de
+     bol plus de tussenruimte eraf. Percentage rekent op .hero__center,
+     dat precies zo breed is als het woordmerk. */
+  align-items: flex-end;
+  text-align: right;
+  /* precies de bol (.116em) plus de tussenruimte (.06em) van het woordmerk */
+  margin-right: calc(var(--wm) * .176);
   margin-top: clamp(.5rem, 1.5vh, 1.25rem);
   font-family: var(--font-display);
   font-size: clamp(1.05rem, .5rem + 2.4vw, 2.5rem);
@@ -625,33 +632,6 @@ address { font-style: normal; }
   color: rgba(255, 255, 255, .92);
 }
 
-.hero__scroll {
-  position: absolute;
-  left: 50%; bottom: clamp(1.25rem, 3vh, 2rem);
-  z-index: 3;
-  transform: translateX(-50%);
-  width: 1.5rem; height: 2.5rem;
-  display: grid;
-  place-items: start center;
-  border: 2px solid rgba(255, 255, 255, .5);
-  border-radius: 999px;
-  padding-top: .4rem;
-}
-.hero__scroll span {
-  width: 3px; height: .5rem;
-  border-radius: 2px;
-  background: var(--butter);
-  animation: scroll-hint 1.8s var(--ease) infinite;
-}
-@keyframes scroll-hint {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(.55rem); opacity: .35; }
-}
-/* Op smalle schermen loopt het adres over de volle breedte — dan zou de
-   scroll-hint eroverheen vallen. */
-@media (max-width: 47.99em) {
-  .hero__scroll { display: none; }
-}
 
 /* ============================================================
    2 / 4 / 5 / 6. SPLIT-SECTIES
