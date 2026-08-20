@@ -180,8 +180,11 @@ address { font-style: normal; }
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
+/* De eerste letter van elke titel staat cursief, zoals in de voorstelling. */
+.section-title::first-letter { font-style: italic; }
+
 /* "SIRVICE" hoort als één woord te lezen; de cursieve helft krijgt
-   daarom iets negatieve ruimte terug. */
+   daarom iets negatieve ruimte terug — anders duwt de schuinstand ze los. */
 .section-title em { font-style: italic; margin-left: -.08em; }
 
 /* Het aanhalingsteken is een eigen merkvorm — een bol met een dunne staart.
@@ -466,8 +469,9 @@ address { font-style: normal; }
 .menu__nav a:nth-child(4) { transition-delay: .24s; }
 .menu__nav a:nth-child(5) { transition-delay: .30s; }
 .menu__nav a:hover { color: #fff; }
-.menu__nav a em { font-style: italic; }
-.menu__nav a span {
+.menu__label::first-letter { font-style: italic; }
+.menu__nav a em { font-style: italic; margin-left: -.06em; }
+.menu__no {
   font-size: .85rem;
   font-weight: 400;
   letter-spacing: .2em;
@@ -665,26 +669,27 @@ address { font-style: normal; }
   flex-direction: column;
   justify-content: center;
   padding: clamp(3.5rem, 9vh, 7rem) var(--pad-x);
-  /* De ondergrond is de diepere tint; het schild hieronder is lichter,
-     precies zoals in het ontwerp. */
-  background: var(--vanille-shade);
+  /* Licht paneel met een iets diepere tint als schild — zo staat het in
+     de voorstelling. */
+  background: var(--vanille);
   overflow: hidden;
 }
-/* Het merkteken — het schild met vlinderdas — als groot watermerk.
-   Opgemeten uit de voorstelling: het schild schaalt op de HOOGTE van het
-   paneel (niet op de breedte), staat horizontaal gecentreerd, loopt bovenaan
-   van de rand af en zet zijn punt op ~96% van de hoogte. Daardoor valt het in
-   een smalle en een brede tekstkolom even goed. */
+/* Het merkteken als groot watermerk. Opgemeten in de voorstelling:
+   het schild vult de VOLLEDIGE hoogte van het tekstpaneel, en zijn hart
+   staat 22% van die hoogte links van de rechterrand van het paneel — in
+   een smalle en een brede kolom precies hetzelfde. De translate werkt op
+   de eigen breedte van het element, dus dat blijft kloppen bij elke
+   kolombreedte. */
 .split__text::before {
   content: '';
   position: absolute;
   z-index: 0;
-  left: 50%;
-  top: -10%;
-  height: 106%;
+  top: 0;
+  right: 0;
+  height: 100%;
   aspect-ratio: 1024 / 827;
-  transform: translateX(-50%);
-  background: var(--vanille);
+  transform: translateX(32.2%);
+  background: var(--vanille-shade);
   -webkit-mask: url('../img/mark.png') no-repeat center / contain;
   mask: url('../img/mark.png') no-repeat center / contain;
   pointer-events: none;
@@ -800,7 +805,7 @@ address { font-style: normal; }
   z-index: 2;
   background: linear-gradient(180deg, rgba(32,32,32,.35) 0%, rgba(32,32,32,.25) 55%, rgba(32,32,32,.72) 100%);
 }
-.quote > *:not(.quote__media):not(.quote__scrim) { position: relative; z-index: 3; }
+.quote > *:not(.quote__media):not(.quote__scrim):not(.photo-credit) { position: relative; z-index: 3; }
 
 .quote__body { margin: 0 0 clamp(1.5rem, 4vh, 2.75rem); color: var(--butter); }
 .quote__body .quote-mark {
@@ -963,13 +968,14 @@ address { font-style: normal; }
   z-index: 2;
   background: linear-gradient(100deg, rgba(32,32,32,.10) 0%, rgba(32,32,32,.20) 45%, rgba(38,44,32,.52) 100%);
 }
-.reviews > *:not(.reviews__media):not(.reviews__scrim):not(.shield-overlay) { position: relative; z-index: 3; }
+.reviews > *:not(.reviews__media):not(.reviews__scrim):not(.shield-overlay):not(.photo-credit) { position: relative; z-index: 3; }
 
 /* Titelblok rechtsboven */
 .reviews__lede { align-self: flex-end; max-width: min(30rem, 82%); text-align: right; }
 .reviews__kicker {
   font-family: var(--font-display);
   font-weight: 800;
+  font-style: italic;
   font-size: clamp(1.35rem, 1rem + 1.6vw, 2.4rem);
   letter-spacing: .02em;
   text-transform: uppercase;
@@ -994,8 +1000,8 @@ address { font-style: normal; }
   width: min(30rem, 90%);
   margin-top: clamp(2rem, 8vh, 5rem);
 }
-.reviews__quote { flex: 1; text-align: right; }
-.reviews__quote .quote-mark { margin-left: auto; width: clamp(2.5rem, 3.5vw, 3.5rem); }
+.reviews__quote { flex: 1; text-align: left; }
+.reviews__quote .quote-mark { width: clamp(2.5rem, 3.5vw, 3.5rem); }
 .reviews__viewport { display: grid; }
 .reviews__viewport blockquote {
   grid-area: 1 / 1;

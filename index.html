@@ -102,12 +102,14 @@ document.addEventListener('error', function (e) {
   </button>
   <div class="menu__inner">
     <nav class="menu__nav" aria-label="Menu">
-      <a href="#about"><span>01</span>About</a>
-      <a href="#sirvice"><span>02</span>Sir<em>vice</em></a>
-      <a href="#food"><span>03</span>Food</a>
-      <a href="#contact"><span>04</span>Contact</a>
-      <a href="#moments"><span>05</span>Moments</a>
-      <a href="#reviews"><span>06</span>Reviews</a>
+      <!-- Het label zit in één span: anders zijn "Sir" en "vice" aparte
+           flex-items en valt de gap van de link ertussen. -->
+      <a href="#about"><span class="menu__no">01</span><span class="menu__label">About</span></a>
+      <a href="#sirvice"><span class="menu__no">02</span><span class="menu__label">Sir<em>vice</em></span></a>
+      <a href="#food"><span class="menu__no">03</span><span class="menu__label">Food</span></a>
+      <a href="#contact"><span class="menu__no">04</span><span class="menu__label">Contact</span></a>
+      <a href="#moments"><span class="menu__no">05</span><span class="menu__label">Moments</span></a>
+      <a href="#reviews"><span class="menu__no">06</span><span class="menu__label">Reviews</span></a>
     </nav>
     <div class="menu__meta">
       <p><a href="mailto:mail@sircatering.be">mail@sircatering.be</a></p>
@@ -312,7 +314,6 @@ document.addEventListener('error', function (e) {
         <a class="btn" href="mailto:mail@sircatering.be?subject=Tell%20us%20your%20plans!">Tell us your plans!</a>
       </p>
     </div>
-    <p class="photo-credit"><strong>Fotografie</strong> Chess bonte</p>
   </section>
 
   <!-- ============================================================
@@ -383,6 +384,7 @@ document.addEventListener('error', function (e) {
     </div>
 
     <span class="reviews__sir" aria-hidden="true">SIR.</span>
+    <p class="photo-credit"><strong>Fotografie</strong> Britt Vangenechten</p>
   </section>
 
 </main>
