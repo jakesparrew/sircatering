@@ -44,6 +44,27 @@ in git of naar Vercel — die map is te zwaar en wordt op de site niet gebruikt.
 
 ---
 
+## Juridisch
+
+Twee losse pagina's, in dezelfde huisstijl:
+
+- `privacy.html` — privacybeleid (AVG/GDPR)
+- `juridisch.html` — ondernemingsgegevens, intellectuele eigendom, aansprakelijkheid, toepasselijk recht
+
+Ze staan gelinkt in de footer en in het overlaymenu. De ondernemingsgegevens
+(Spijs bv, Speistraat 43, btw BE 0786.860.634) staan in de footer, in het menu,
+op beide juridische pagina's en in de structured data.
+
+> **Nog na te lezen.** Dit is een degelijke basis op maat van wat de site
+> feitelijk doet, maar geen juridisch advies. Laat het even nakijken voor het
+> definitief live gaat — en vul aan wat ik niet kon weten: een telefoonnummer
+> (de About-tekst zegt "bel ons"), en of er algemene voorwaarden bij moeten.
+
+**Deze site verzamelt niets.** Geen cookies, geen statistieken, geen
+formulieren, en sinds Poppins zelf gehost wordt ook **geen enkel verzoek naar
+een externe partij**. Daarom is er geen cookiebanner nodig. Voeg je later
+analytics of een formulier toe, pas dan het privacybeleid aan.
+
 ## Structuur
 
 ```

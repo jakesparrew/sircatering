@@ -27,6 +27,9 @@
   "additionalType": "https://schema.org/CateringService",
   "name": "Sir Catering",
   "alternateName": "SIR. Premium Event Catering",
+  "legalName": "Spijs bv",
+  "vatID": "BE0786860634",
+  "taxID": "0786.860.634",
   "url": "https://sircatering.be/",
   "email": "mail@sircatering.be",
   "image": "https://sircatering.be/images/og-image.jpg",
@@ -55,10 +58,7 @@
 <link rel="preload" href="fonts/LEMONMILK-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/LEMONMILK-Light.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Alleen Poppins nog: de titels gebruiken LEMON MILK van de schijf. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+<link rel="preload" href="fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 
 <script>
@@ -113,8 +113,10 @@ document.addEventListener('error', function (e) {
     </nav>
     <div class="menu__meta">
       <p><a href="mailto:mail@sircatering.be">mail@sircatering.be</a></p>
-      <p>Speistraat 43<br>9030 Mariakerke</p>
-      <p><a href="https://www.instagram.com/sircatering" target="_blank" rel="noopener">Instagram</a></p>
+      <p>Spijs bv<br>Speistraat 43<br>9030 Mariakerke<br>Btw BE 0786.860.634</p>
+      <p><a href="https://www.instagram.com/sircatering" target="_blank" rel="noopener">Instagram</a><br>
+         <a href="privacy.html">Privacy</a><br>
+         <a href="juridisch.html">Juridisch</a></p>
     </div>
   </div>
 </div>
@@ -410,10 +412,18 @@ document.addEventListener('error', function (e) {
     </address>
   </div>
 
-  <p class="footer__legal">
-    <span>&copy; <span data-year>2026</span> Sir Catering</span>
-    <a href="https://www.instagram.com/sircatering" target="_blank" rel="noopener">Instagram</a>
-  </p>
+  <div class="footer__legal">
+    <p class="footer__company">
+      <span>&copy; <span data-year>2026</span> Spijs bv</span>
+      <span>Speistraat 43, 9030 Mariakerke</span>
+      <span>Btw BE 0786.860.634</span>
+    </p>
+    <nav class="footer__links" aria-label="Juridisch">
+      <a href="privacy.html">Privacy</a>
+      <a href="juridisch.html">Juridisch</a>
+      <a href="https://www.instagram.com/sircatering" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
 </footer>
 
 <script src="assets/js/main.js" defer></script>

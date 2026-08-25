@@ -79,6 +79,25 @@
   font-display: swap;
 }
 
+/* Poppins wordt zelf gehost (SIL Open Font License, vrij te verspreiden).
+   Zo gaat er geen enkel verzoek meer naar Google en dus ook geen IP-adres
+   van de bezoeker — dat scheelt een lastige passage in de privacyverklaring
+   en een cookiebanner. Alleen de latin-subset: de site is Nederlandstalig. */
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../fonts/Poppins-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../fonts/Poppins-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- Design tokens ----------------------------------- */
 :root {
   /* Merkkleuren — exact uit de style sheet */
@@ -1156,7 +1175,7 @@ address { font-style: normal; }
   z-index: 3;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   gap: .75rem 1.5rem;
   margin-top: clamp(2rem, 5vh, 3.5rem);
@@ -1165,8 +1184,12 @@ address { font-style: normal; }
   font-size: .8rem;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .65);
+  color: rgba(255, 255, 255, .72);
 }
+/* Bedrijfsgegevens: verplichte vermeldingen, gescheiden door een puntje. */
+.footer__company { display: flex; flex-wrap: wrap; gap: .35rem 1rem; }
+.footer__company span + span::before { content: '·'; margin-right: 1rem; opacity: .55; }
+.footer__links { display: flex; flex-wrap: wrap; gap: .35rem 1.5rem; }
 .footer__legal a { text-decoration: none; }
 .footer__legal a:hover { color: var(--butter); }
 
@@ -1198,3 +1221,86 @@ address { font-style: normal; }
   /* .js-prefix nodig: anders verliest deze regel het van .js .reveal */
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   JURIDISCHE PAGINA'S (privacy, juridisch)
+   Eén leeskolom, dezelfde huisstijl, geen franje.
+   ============================================================ */
+.legal {
+  max-width: 46rem;
+  margin-inline: auto;
+  padding: calc(var(--header-h) + clamp(2.5rem, 7vh, 5rem)) var(--pad-x) clamp(3rem, 8vh, 6rem);
+}
+.legal__kicker {
+  font-family: var(--font-display);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: .75rem;
+}
+.legal h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.25rem, 1.25rem + 4vw, 4rem);
+  line-height: .95;
+  letter-spacing: -.015em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.legal h1::first-letter { font-style: italic; }
+.legal__updated { color: var(--ink-muted); font-size: .9rem; margin-bottom: clamp(2rem, 5vh, 3.5rem); }
+
+.legal h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.15rem, 1rem + .7vw, 1.6rem);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  margin: clamp(2rem, 5vh, 3rem) 0 .75rem;
+}
+.legal h2::first-letter { font-style: italic; }
+.legal h3 { font-weight: 700; font-size: 1.05rem; margin: 1.5rem 0 .35rem; }
+.legal p + p, .legal ul + p, .legal p + ul { margin-top: 1rem; }
+.legal ul { list-style: none; display: grid; gap: .5rem; margin-top: .75rem; }
+.legal ul li { padding-left: 1.35rem; position: relative; }
+.legal ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .72em;
+  width: .5rem; height: .5rem;
+  border-radius: 50%;
+  background: var(--olive);
+}
+.legal a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .25em; }
+.legal a:hover { color: var(--olive); }
+
+/* Bedrijfsgegevens: één blok dat op elke juridische pagina terugkomt */
+.legal__card {
+  margin-top: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--vanille-shade);
+  border-radius: .75rem;
+}
+.legal__card dl { display: grid; grid-template-columns: auto 1fr; gap: .4rem 1.5rem; margin: 0; }
+.legal__card dt { font-weight: 700; }
+.legal__card dd { margin: 0; }
+@media (max-width: 34em) {
+  .legal__card dl { grid-template-columns: 1fr; gap: .1rem; }
+  .legal__card dd { margin-bottom: .6rem; }
+}
+
+.legal__back {
+  display: inline-block;
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid var(--butter);
+  padding-bottom: .2rem;
+}
+.legal__back:hover { border-color: var(--olive); }
