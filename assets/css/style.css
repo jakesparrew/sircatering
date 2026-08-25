@@ -539,7 +539,9 @@ address { font-style: normal; }
   gap: 1rem;
 }
 .hero__link {
-  font-family: var(--font-display);
+  /* Poppins, niet het display-font: de twee hoeken horen rustig te blijven
+     zodat het woordmerk het beeld draagt. */
+  font-family: var(--font-body);
   font-weight: 700;
   font-size: clamp(.7rem, .6rem + .3vw, .95rem);
   letter-spacing: .16em;
@@ -566,7 +568,8 @@ address { font-style: normal; }
 .hero__wordmark {
   display: flex;
   align-items: flex-end;
-  gap: .06em;
+  /* De punt hoort krap tegen de R te staan, niet als los element ernaast. */
+  gap: .022em;
   margin: 0;
   font-family: var(--font-display);
   font-weight: 900;
@@ -580,22 +583,47 @@ address { font-style: normal; }
 }
 .hero__sir { display: block; }
 
-/* De punt van "SIR." is tegelijk de menuknop. Opgemeten in de voorstelling:
-   diameter 0,143 x de kaphoogte en het hart 0,28 kaphoogte boven de
-   basislijn — omgerekend met de kaphoogte van LEMON MILK (0,8125 em).
+/* De punt van "SIR." is tegelijk de menuknop. Hij hoort zich te gedragen als
+   een echt punt: klein, en rustend op de basislijn van SIR.
+   LEMON MILK heeft een kaphoogte van 0,799 em en een basislijn die met
+   line-height .85 vrijwel samenvalt met de onderrand van het regelvak — met
+   align-items: flex-end staat de bol dus goed met een marge van bijna nul.
    De streepjes zijn UITGESPAARD: het masker snijdt ze uit de bol, zodat de
    achtergrond erdoorheen komt in plaats van donkere balkjes. */
 .hero__dot {
   position: relative;
   flex: none;
   display: block;
-  width: .116em; height: .116em;
-  margin-bottom: .170em;
+  width: .129em; height: .129em;
+  /* Onderkant net boven de basislijn, zoals een punt hoort te staan.
+     De onderrand van het regelvak ligt .005em ONDER de basislijn, dus
+     .026em marge zet de bol .021em erboven — de maat uit de referentie. */
+  margin-bottom: .026em;
   padding: 0;
+  background: none;
+  transition: transform .3s var(--ease);
+}
+/* De bol zit in een pseudo-element, NIET op de knop zelf: een masker snijdt
+   ook de aanraakzone weg, waardoor het vergrote tikvlak hieronder verdween.
+   De streepjes zijn UITGESPAARD, zodat de achtergrond erdoorheen komt in
+   plaats van donkere balkjes. */
+.hero__dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: var(--butter);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill-rule='evenodd' d='M50 0a50 50 0 1 0 .1 0zM27 33h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9zm0 13h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9zm0 13h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9z'/%3E%3C/svg%3E") no-repeat center / contain;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill-rule='evenodd' d='M50 0a50 50 0 1 0 .1 0zM27 33h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9zm0 13h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9zm0 13h46a4.5 4.5 0 0 1 0 9H27a4.5 4.5 0 0 1 0-9z'/%3E%3C/svg%3E") no-repeat center / contain;
-  transition: transform .3s var(--ease);
+}
+/* Als punt is de bol klein, maar hij blijft de menuknop: dit onzichtbare
+   vlak houdt hem overal minstens 44 px tikbaar. Werkt alleen omdat de knop
+   zelf niet gemaskeerd is. */
+.hero__dot::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: max(100%, 44px); height: max(100%, 44px);
+  transform: translate(-50%, -50%);
 }
 .hero__dot:hover { transform: scale(1.08); }
 /* De balkjes zitten in het masker; het span is er nog voor schermlezers. */
@@ -604,13 +632,15 @@ address { font-style: normal; }
 .hero__tagline {
   display: flex;
   flex-direction: column;
-  /* Rechts uitgelijnd op de rechterrand van "SIR", dus de breedte van de
-     bol plus de tussenruimte eraf. Percentage rekent op .hero__center,
-     dat precies zo breed is als het woordmerk. */
+  /* Rechts uitgelijnd op de RECHTERRAND VAN DE R, niet op de bol — zo staat
+     het in de voorstelling. Dat is de bol (.129em) plus de tussenruimte
+     (.01em) eraf, en de negatieve letterafstand achter de R (.02em) er weer
+     bij, want die zit nog in het regelvak van "SIR".
+     Percentage rekent op .hero__center, dat exact zo breed is als het
+     woordmerk. */
   align-items: flex-end;
   text-align: right;
-  /* precies de bol (.116em) plus de tussenruimte (.06em) van het woordmerk */
-  margin-right: calc(var(--wm) * .176);
+  margin-right: calc(var(--wm) * .138);
   margin-top: clamp(.5rem, 1.5vh, 1.25rem);
   font-family: var(--font-display);
   font-size: clamp(1.05rem, .5rem + 2.4vw, 2.5rem);
