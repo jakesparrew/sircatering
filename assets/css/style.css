@@ -774,14 +774,32 @@ address { font-style: normal; }
 .split__text--end { align-items: flex-end; text-align: right; }
 .split__text--end .quote-mark { margin-left: auto; }
 
-.split__media { position: relative; min-height: 62vh; }
+/* Alle 31 carrouselfoto's zijn 1400x1800. Het kader krijgt diezelfde
+   verhouding, met drie gevolgen: er wordt niets weggesneden (object-fit:
+   cover heeft niets te croppen), elke foto staat op elk scherm even groot in
+   beeld, en het kader schaalt mee met de breedte.
+   De hoogte stond eerder vast op 62vh (klein scherm) of op de sectiehoogte
+   (desktop). Die sectiehoogte volgt de tekstlengte, waardoor de foto's per
+   sectie verschilden: 808, 777 en 716 px hoog op een venster van 1280x800.
+   De breedtegrens begrenst de hoogte tot een schermvulling zonder de
+   verhouding te breken; een max-height zou het kader juist weer breder maken
+   dan de foto en dus opnieuw croppen. */
+.split__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1400 / 1800;
+  max-width: calc((100svh - var(--header-h)) * 1400 / 1800);
+  margin-inline: auto;
+}
 
 /* Desktop: twee gelijke kolommen op volle hoogte */
 @media (min-width: 60em) {
   /* Hoogte minus de header: anders valt na een sprong vanuit het menu de
      onderkant van de sectie — met de carrousel-stippen — buiten beeld. */
   .split { grid-template-columns: 1fr 1fr; min-height: calc(100svh - var(--header-h)); }
-  .split__media { min-height: 100%; }
+  /* Niet uitrekken tot de rijhoogte: een gestrekt grid-item krijgt een
+     vaste hoogte en dan doet aspect-ratio niets meer. */
+  .split__media { align-self: center; }
 }
 
 /* Mobiel: tekst altijd eerst, beeld eronder. Zo volgt op de hero meteen de
