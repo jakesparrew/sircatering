@@ -204,8 +204,12 @@ document.addEventListener('error', function (e) {
       <span class="quote-mark quote-mark--open quote-mark--butter" aria-hidden="true"></span>
       <p>Jullie verhaal,<br>onze gastronomie</p>
     </blockquote>
-    <span class="quote__sir" aria-hidden="true">SIR.</span>
-    <p class="photo-credit"><strong>Fotografie</strong> <span class="photo-credit__name">Chess Bonte</span></p>
+    <!-- "SIR." en de fotocredit horen op een gedeelde basislijn; daarom staan
+         ze in een rij en niet los van elkaar. -->
+    <div class="credit-row">
+      <span class="quote__sir" aria-hidden="true">SIR.</span>
+      <p class="photo-credit"><strong>Fotografie</strong> <span class="photo-credit__name">Chess Bonte</span></p>
+    </div>
   </section>
 
   <!-- ============================================================
@@ -390,8 +394,10 @@ document.addEventListener('error', function (e) {
       <button class="reviews__next" type="button" aria-label="Volgende review"></button>
     </div>
 
-    <span class="reviews__sir" aria-hidden="true">SIR.</span>
-    <p class="photo-credit"><strong>Fotografie</strong> <span class="photo-credit__name">Britt Vangenechten</span></p>
+    <div class="credit-row">
+      <span class="reviews__sir" aria-hidden="true">SIR.</span>
+      <p class="photo-credit"><strong>Fotografie</strong> <span class="photo-credit__name">Britt Vangenechten</span></p>
+    </div>
   </section>
 
 </main>

@@ -897,6 +897,24 @@ address { font-style: normal; }
   color: var(--butter);
 }
 
+/* "SIR." en de fotocredit stonden los van elkaar: de credit hing absoluut
+   onderaan de sectie, waardoor de basislijnen ruim 30 px uiteenliepen. In een
+   rij met align-items: baseline delen ze een basislijn, op elke
+   schermbreedte en zonder vaste waarden. */
+.credit-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem 2rem;
+}
+/* In de rij hoort de credit mee te lopen in plaats van absoluut te staan. */
+.credit-row .photo-credit {
+  position: static;
+  right: auto;
+  bottom: auto;
+}
+
 /* Fotocredit — klein, rechtsonder, zoals in de voorstelling */
 .photo-credit {
   position: absolute;
@@ -1116,8 +1134,11 @@ address { font-style: normal; }
 }
 
 /* Groot en gedempt linksonder, net als in de voorstelling */
+/* De rij duwt zichzelf naar de onderkant van de reviews-kolom; dat deed
+   .reviews__sir eerst zelf, maar in een rij werkt margin-top op de kruisas
+   en zou het de basislijn-uitlijning breken. */
+.reviews .credit-row { margin-top: auto; }
 .reviews__sir {
-  margin-top: auto;
   font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(3rem, 2rem + 4.5vw, 7rem);
