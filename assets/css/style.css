@@ -1119,7 +1119,19 @@ address { font-style: normal; }
 .reviews__viewport { display: grid; }
 .reviews__viewport blockquote {
   grid-area: 1 / 1;
+  /* Niet uitrekken tot de celhoogte: de cel is zo hoog als de langste review,
+     dus zonder dit zou de ballon van een korte review veel te groot staan. */
+  align-self: start;
   margin: 0;
+  padding: clamp(.9rem, 2.2vw, 1.35rem) clamp(1.05rem, 2.8vw, 1.6rem);
+  /* Doorschijnende ballon in het donkergrijs van de bovenbalk (#202020).
+     Achter dit paneel is de foto gemiddeld donker (luminantie 0,08), maar er
+     staan zonnige plekken tot 0,91 en daar viel de tekst weg. De tekst is
+     botergeel (luminantie 0,875), dus voor 4,5:1 op die lichtste plek is
+     minstens 84,2% dekking nodig; 86% geeft 4,9:1 en laat de foto er nog
+     zichtbaar door schemeren. */
+  background: rgba(32, 32, 32, .86);
+  border-radius: 1.1rem;
   opacity: 0;
   visibility: hidden;
   transition: opacity .5s var(--ease), visibility 0s linear .5s;
