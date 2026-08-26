@@ -223,27 +223,30 @@ address { font-style: normal; }
    font-size 185% en een verschuiving van -21,8% / -6,33%.
    Zo blijft `width` de maat bepalen en werken alle bestaande
    maat-overschrijvingen en marges ongewijzigd. */
+/* Het aanhalingsteken is een merkelement, geen letterteken: geen enkele
+   LEMON MILK-snede heeft deze vorm (die hebben massieve druppels met een
+   korte, dikke staart). Hier natekend uit de aangeleverde referentie.
+   Verhoudingen, met de bal als maat: totale hoogte 1,7 bal, de punt 0,35
+   bal rechts van het balmidden, tussenruimte tussen de bollen 0,2 bal.
+   Bal en staart staan als twee losse vormen in het masker, zodat ze
+   samensmelten zonder gedoe met vulregels. */
+/* Het aanhalingsteken is een merkelement, geen letterteken: geen enkele
+   LEMON MILK-snede heeft deze vorm. De vorm komt rechtstreeks uit de
+   aangeleverde voorstelling en staat in assets/img/quote-mark.svg.
+   Het is een MASKER, dus de vorm zit in het bestand en de kleur in de CSS —
+   zo staat hetzelfde teken per sectie in de juiste kleur. */
 .quote-mark {
-  position: relative;
   display: block;
   width: clamp(3.25rem, 5vw, 5rem);
-  aspect-ratio: 5405 / 3657;
+  aspect-ratio: 468.55 / 355.88;
   margin-bottom: clamp(.75rem, 2vh, 1.5rem);
-  container-type: inline-size;
-  font-family: var(--font-display);
-  font-weight: 900;
-  line-height: 1;
-  color: var(--olive);
+  background: var(--olive);
+  -webkit-mask: url('../img/quote-mark.svg') no-repeat center / contain;
+  mask: url('../img/quote-mark.svg') no-repeat center / contain;
 }
-.quote-mark::before {
-  content: '\201C';
-  position: absolute;
-  top: -21.8cqw;
-  left: -6.33cqw;
-  font-size: 185cqw;
-}
-.quote-mark--close::before { content: '\201D'; }
-.quote-mark--butter { color: var(--butter); }
+/* Het sluitteken is dezelfde vorm, een halve slag gedraaid. */
+.quote-mark--close { transform: rotate(180deg); }
+.quote-mark--butter { background: var(--butter); }
 
 .btn {
   display: inline-block;
@@ -856,7 +859,7 @@ address { font-style: normal; }
 
 .quote__body { margin: 0 0 clamp(1.5rem, 4vh, 2.75rem); color: var(--butter); }
 .quote__body .quote-mark {
-  width: clamp(2.25rem, 3.2vw, 3.25rem);
+  /* Alleen de ruimte eronder wijkt af; de maat is overal dezelfde. */
   margin-bottom: clamp(.6rem, 1.5vh, 1rem);
 }
 .quote__body p {
@@ -881,11 +884,13 @@ address { font-style: normal; }
   z-index: 3;
   font-size: .8rem;
   letter-spacing: .02em;
-  color: rgba(255, 255, 255, .6);
+  /* Bedoeld als watermerk: net leesbaar, nooit een element dat aandacht
+     vraagt. Vandaar de lage dekking op de hele regel. */
+  color: rgba(255, 255, 255, .32);
 }
-.photo-credit strong { font-weight: 600; color: rgba(255, 255, 255, .75); }
-/* De naam van de fotograaf in het geel, ingehouden zodat het beeld voorgaat. */
-.photo-credit__name { color: var(--butter); opacity: .65; }
+.photo-credit strong { font-weight: 600; color: rgba(255, 255, 255, .38); }
+/* De naam van de fotograaf in het geel, even ingehouden als de rest. */
+.photo-credit__name { color: var(--butter); opacity: .38; }
 
 /* Het schild als grote, lichte overlay óver de foto — rechts van het midden,
    boven- en onderkant aflopend, zoals in de voorstelling. */
@@ -1049,7 +1054,6 @@ address { font-style: normal; }
   margin-top: clamp(2rem, 8vh, 5rem);
 }
 .reviews__quote { flex: 1; text-align: left; }
-.reviews__quote .quote-mark { width: clamp(2.5rem, 3.5vw, 3.5rem); }
 .reviews__viewport { display: grid; }
 .reviews__viewport blockquote {
   grid-area: 1 / 1;
