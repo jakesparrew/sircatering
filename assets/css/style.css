@@ -608,8 +608,10 @@ address { font-style: normal; }
 .hero__wordmark {
   display: flex;
   align-items: flex-end;
-  /* De punt hoort krap tegen de R te staan, niet als los element ernaast. */
-  gap: .022em;
+  /* Tussenruimte tussen de R en de punt: 0,0543 kaphoogte uit de aangeleverde
+     SVG, plus de 0,01323 em waarmee de R rechts buiten zijn regelvak valt
+     door de negatieve letterafstand. */
+  gap: .0566em;
   margin: 0;
   font-family: var(--font-display);
   font-weight: 900;
@@ -634,11 +636,14 @@ address { font-style: normal; }
   position: relative;
   flex: none;
   display: block;
-  width: .129em; height: .129em;
-  /* Onderkant net boven de basislijn, zoals een punt hoort te staan.
-     De onderrand van het regelvak ligt .005em ONDER de basislijn, dus
-     .026em marge zet de bol .021em erboven — de maat uit de referentie. */
-  margin-bottom: .026em;
+  /* Maat uit de aangeleverde SVG: de bol is 0,2274 x de kaphoogte van SIR,
+     omgerekend met de kaphoogte van LEMON MILK (0,7988 em). */
+  width: .1816em; height: .1816em;
+  /* In de SVG staat de onderkant van de bol op de basislijn van de R (0,002
+     kaphoogte eronder, dus verwaarloosbaar). De onderrand van het regelvak
+     ligt .005em ONDER die basislijn, dus tilt deze marge de bol precies
+     terug tot op de basislijn. */
+  margin-bottom: .005em;
   padding: 0;
   background: none;
   transition: transform .3s var(--ease);
@@ -680,7 +685,7 @@ address { font-style: normal; }
      woordmerk. */
   align-items: flex-end;
   text-align: right;
-  margin-right: calc(var(--wm) * .138);
+  margin-right: calc(var(--wm) * .225);
   margin-top: clamp(.5rem, 1.5vh, 1.25rem);
   font-family: var(--font-display);
   font-size: clamp(1.05rem, .5rem + 2.4vw, 2.5rem);
