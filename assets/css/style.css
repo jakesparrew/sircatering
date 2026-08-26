@@ -706,6 +706,16 @@ address { font-style: normal; }
   text-transform: uppercase;
   color: rgba(255, 255, 255, .92);
 }
+/* Het adres linkt naar de kaart, maar zonder streep eronder: de hero moet
+   rustig blijven. Het geel bij hover en focus maakt duidelijk dat het klikt;
+   de focusring van de browser blijft staan voor wie met het toetsenbord werkt. */
+.hero__address a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .25s var(--ease);
+}
+.hero__address a:hover,
+.hero__address a:focus-visible { color: var(--butter); }
 
 
 /* ============================================================

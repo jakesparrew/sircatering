@@ -149,7 +149,13 @@ document.addEventListener('error', function (e) {
       <p class="hero__tagline"><strong>Premium Event</strong><span>Catering</span></p>
     </div>
 
-    <p class="hero__address">Speistraat 43&nbsp;&nbsp;9030 Mariakerke</p>
+    <!-- Adres opent de kaart. Query in plaats van coordinaten: Google toont dan
+         de zaak met naam, en het adres blijft leesbaar in de broncode. -->
+    <p class="hero__address"><a
+      href="https://www.google.com/maps/search/?api=1&amp;query=Speistraat%2043%2C%209030%20Mariakerke%2C%20Belgium"
+      target="_blank" rel="noopener"
+      aria-label="Speistraat 43, 9030 Mariakerke — openen in Google Maps"
+      >Speistraat 43&nbsp;&nbsp;9030 Mariakerke</a></p>
 
   </section>
 
