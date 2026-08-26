@@ -204,8 +204,7 @@ address { font-style: normal; }
 .booking__title::first-letter,
 .booking__step h3::first-letter,
 .reviews__lede h2::first-letter,
-.footer__kicker::first-letter,
-.quote__body p::first-letter { font-style: italic; }
+.footer__kicker::first-letter { font-style: italic; }
 
 /* "SIRVICE" hoort als één woord te lezen; de cursieve helft krijgt
    daarom iets negatieve ruimte terug — anders duwt de schuinstand ze los. */
@@ -215,17 +214,36 @@ address { font-style: normal; }
    De voorstelling gebruikt twee richtingen: openend (66) bij About, Food en
    de quote; sluitend (99) bij Sirvice, Moments en Reviews. Het masker is de
    sluitende vorm; de openende is dezelfde vorm 180° gedraaid. */
+/* Het aanhalingsteken is het ECHTE teken uit LEMON MILK, niet langer een
+   natekening in een SVG-masker: die had te dikke, stompe staarten.
+   Opgemeten in het font (per em): inkt 0,5405 breed en 0,3657 hoog, met de
+   inktbovenkant 0,8022 boven de basislijn en een linkermarge van 0,0342.
+   Met line-height 1 ligt de basislijn 0,92 em onder de kaderbovenkant, dus
+   staat de inkt 0,1178 em lager. Omgerekend naar de kaderbreedte:
+   font-size 185% en een verschuiving van -21,8% / -6,33%.
+   Zo blijft `width` de maat bepalen en werken alle bestaande
+   maat-overschrijvingen en marges ongewijzigd. */
 .quote-mark {
+  position: relative;
   display: block;
   width: clamp(3.25rem, 5vw, 5rem);
-  aspect-ratio: 128 / 88;
+  aspect-ratio: 5405 / 3657;
   margin-bottom: clamp(.75rem, 2vh, 1.5rem);
-  background: var(--olive);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 88' fill='%23000'%3E%3Cg%3E%3Ccircle cx='30' cy='30' r='30'/%3E%3Cpath d='M58 32c0 24-16 45-43 56l-4-8c21-12 33-30 34-52z'/%3E%3C/g%3E%3Cg transform='translate(68 0)'%3E%3Ccircle cx='30' cy='30' r='30'/%3E%3Cpath d='M58 32c0 24-16 45-43 56l-4-8c21-12 33-30 34-52z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 88' fill='%23000'%3E%3Cg%3E%3Ccircle cx='30' cy='30' r='30'/%3E%3Cpath d='M58 32c0 24-16 45-43 56l-4-8c21-12 33-30 34-52z'/%3E%3C/g%3E%3Cg transform='translate(68 0)'%3E%3Ccircle cx='30' cy='30' r='30'/%3E%3Cpath d='M58 32c0 24-16 45-43 56l-4-8c21-12 33-30 34-52z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+  container-type: inline-size;
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--olive);
 }
-.quote-mark--open { transform: rotate(180deg); }
-.quote-mark--butter { background: var(--butter); }
+.quote-mark::before {
+  content: '\201C';
+  position: absolute;
+  top: -21.8cqw;
+  left: -6.33cqw;
+  font-size: 185cqw;
+}
+.quote-mark--close::before { content: '\201D'; }
+.quote-mark--butter { color: var(--butter); }
 
 .btn {
   display: inline-block;
@@ -853,7 +871,6 @@ address { font-style: normal; }
   line-height: 1;
   letter-spacing: -.01em;
   color: var(--butter);
-  opacity: .5;
 }
 
 /* Fotocredit — klein, rechtsonder, zoals in de voorstelling */
@@ -867,6 +884,8 @@ address { font-style: normal; }
   color: rgba(255, 255, 255, .6);
 }
 .photo-credit strong { font-weight: 600; color: rgba(255, 255, 255, .75); }
+/* De naam van de fotograaf in het geel, ingehouden zodat het beeld voorgaat. */
+.photo-credit__name { color: var(--butter); opacity: .65; }
 
 /* Het schild als grote, lichte overlay óver de foto — rechts van het midden,
    boven- en onderkant aflopend, zoals in de voorstelling. */
