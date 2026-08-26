@@ -749,11 +749,18 @@ address { font-style: normal; }
   content: '';
   position: absolute;
   z-index: 0;
-  top: 0;
+  /* Maat uit de aangeleverde voorstelling: het schild is daar 121,2% van de
+     kaderhoogte, begint 1,1% boven de bovenrand en steekt 33,6% van zijn
+     eigen breedte voorbij de rechterrand. De vorm zelf blijft gelijk: de
+     inkt in de voorstelling meet 718x579 (1,2401) en mark.png 1023x825
+     (1,2400) — dezelfde verhouding, alleen groter in beeld.
+     .split__text snijdt af met overflow: hidden, dus het loopt netjes
+     buiten beeld en niet in de secties eronder. */
+  top: -1.1%;
   right: 0;
-  height: 100%;
+  height: 121.2%;
   aspect-ratio: 1024 / 827;
-  transform: translateX(32.2%);
+  transform: translateX(33.6%);
   background: var(--vanille-shade);
   -webkit-mask: url('../img/mark.png') no-repeat center / contain;
   mask: url('../img/mark.png') no-repeat center / contain;
@@ -761,7 +768,6 @@ address { font-style: normal; }
 }
 .split__card { position: relative; z-index: 1; max-width: 34rem; }
 .split__card p + p { margin-top: 1.15rem; }
-.split__tagline { font-weight: 600; }
 .split__tagline em { font-style: italic; }
 .text-link { text-decoration: underline; text-underline-offset: 3px; }
 
