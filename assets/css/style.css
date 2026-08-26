@@ -190,7 +190,8 @@ address { font-style: normal; }
 .skip-link:focus-visible { transform: translate(-50%, 0); }
 
 /* ---------- Herbruikbare typografie ------------------------- */
-.section-title {
+.section-title,
+.reviews__kicker {
   font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(2.75rem, 1.5rem + 5vw, 5.5rem);
@@ -204,6 +205,7 @@ address { font-style: normal; }
 .booking__title::first-letter,
 .booking__step h3::first-letter,
 .reviews__lede h2::first-letter,
+.reviews__kicker::first-letter,
 .footer__kicker::first-letter { font-style: italic; }
 
 /* "SIRVICE" hoort als één woord te lezen; de cursieve helft krijgt
@@ -1087,13 +1089,11 @@ address { font-style: normal; }
 
 /* Titelblok rechtsboven */
 .reviews__lede { align-self: flex-end; max-width: min(30rem, 82%); text-align: right; }
+/* REVIEWS deelt de maat met de andere sectietitels (zie .section-title
+   hierboven); hier staat alleen wat eigen is aan deze sectie, want het woord
+   ligt op een foto. Het volledig cursieve font-style is eruit: net als bij de
+   andere titels staat nu alleen de eerste letter schuin. */
 .reviews__kicker {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-style: italic;
-  font-size: clamp(1.35rem, 1rem + 1.6vw, 2.4rem);
-  letter-spacing: .02em;
-  text-transform: uppercase;
   color: var(--butter);
   text-shadow: 0 2px 16px rgba(0, 0, 0, .45);
 }
