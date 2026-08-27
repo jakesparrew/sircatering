@@ -783,15 +783,14 @@ address { font-style: normal; }
    De hoogte stond eerder vast op 62vh (klein scherm) of op de sectiehoogte
    (desktop). Die sectiehoogte volgt de tekstlengte, waardoor de foto's per
    sectie verschilden: 808, 777 en 716 px hoog op een venster van 1280x800.
-   De breedtegrens begrenst de hoogte tot een schermvulling zonder de
-   verhouding te breken; een max-height zou het kader juist weer breder maken
-   dan de foto en dus opnieuw croppen. */
+   Het kader vult de volle kolombreedte, zodat de foto aansluit op het
+   tekstpaneel waar het schild ophoudt. Dat maakt de sectie hoger dan een
+   schermhoogte op brede vensters; dat is de prijs van een staande foto die
+   niet gecropt mag worden. */
 .split__media {
   position: relative;
   width: 100%;
   aspect-ratio: 1400 / 1800;
-  max-width: calc((100svh - var(--header-h)) * 1400 / 1800);
-  margin-inline: auto;
 }
 
 /* Desktop: twee gelijke kolommen op volle hoogte */
