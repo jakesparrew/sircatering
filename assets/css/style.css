@@ -1361,8 +1361,17 @@ address { font-style: normal; }
 .footer__company { display: flex; flex-wrap: wrap; gap: .35rem 1rem; }
 .footer__company span + span::before { content: '·'; margin-right: 1rem; opacity: .55; }
 .footer__links { display: flex; flex-wrap: wrap; gap: .35rem 1.5rem; }
-.footer__legal a { text-decoration: none; }
-.footer__legal a:hover { color: var(--butter); }
+.footer__legal a { position: relative; text-decoration: none; }
+/* De kleine lettertjes zijn maar 18 px hoog; dit onzichtbare vlak brengt het
+   aanraakvlak op 26 px zonder de opmaak te veranderen. */
+.footer__legal a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: -4px; bottom: -4px;
+}
+.footer__legal a:hover,
+.footer__legal a:focus-visible { color: var(--butter); }
 
 @media (max-width: 47.99em) {
   .footer__contact { justify-items: start; text-align: left; }
