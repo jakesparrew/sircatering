@@ -550,7 +550,10 @@ address { font-style: normal; }
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 100svh;
+  /* Geen min-height: de sectie is exact zo hoog als het kader. Met een
+     min-height zou er ruimte boven en onder ontstaan zodra het kader lager
+     is dan het venster, en dat is precies de opvulling die eruit moest.
+     Op telefoons zet de mobiele regel het kader wel op schermhoogte. */
   /* Diep rood uit de foto zelf bemonsterd (randen lopen van rgb(111,1,0) tot
      rgb(183,3,4)); dit is de ruimte naast het kader op brede schermen. */
   background: rgb(124, 1, 1);
@@ -564,7 +567,9 @@ address { font-style: normal; }
 .hero__frame {
   position: relative;
   container-type: inline-size;
-  width: min(100%, calc(100svh * 2000 / 1414));
+  /* Volle breedte, net als het footer-kader: geen opvulling naast de foto.
+     De hoogte volgt uit de verhouding, dus de hele foto blijft zichtbaar. */
+  width: 100%;
   aspect-ratio: 2000 / 1414;
   display: flex;
   flex-direction: column;
