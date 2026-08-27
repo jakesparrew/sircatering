@@ -1304,6 +1304,19 @@ address { font-style: normal; }
 
 @media (max-width: 47.99em) {
   .footer__contact { justify-items: start; text-align: left; }
+
+  /* De 19,1vw uit de voorstelling komt van een LIGGEND kader. Op een staand
+     scherm valt het woordmerk daarmee veel te klein uit: het vulde 25% van de
+     sectiehoogte tegen 66% in de voorstelling, en het blok werd zelfs smaller
+     dan de kicker erboven (145 px tegen 175 px), waardoor die eroverheen hing.
+     Hier bepaalt de breedte de maat: de breedste regel ("YES", 1,874 em inkt)
+     vult de tekstkolom, met 4% lucht. */
+  .footer__wordmark { font-size: calc((100vw - 2 * var(--pad-x)) / 1.95); }
+
+  /* Onder elkaar in plaats van doorlopend: bij afbreken kwam het puntje aan
+     het begin van een regel te staan. */
+  .footer__company { display: grid; gap: .35rem; }
+  .footer__company span + span::before { content: none; }
 }
 
 /* ============================================================
