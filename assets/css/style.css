@@ -1219,10 +1219,10 @@ address { font-style: normal; }
   /* GEEN horizontale padding: cqw rekent op de content-box, dus met padding
      zouden alle korpsen en percentages een fractie te klein uitvallen. De
      zijmarges staan daarom op de kinderen zelf. */
-  /* 10,62% zet de basislijn van de kicker op 17,69% van de hoogte; met
+  /* 10,19% zet de basislijn van de kicker op 17,69% van de hoogte; met
      line-height 1 ligt die basislijn op 0,92em onder de kaderrand. De
      regelafstand van het woordmerk levert de rest. */
-  padding: 10.62% 0 4.11%;
+  padding: 10.19% 0 4.11%;
   overflow: hidden;
 }
 .footer__media { position: absolute; inset: 0; }
@@ -1248,10 +1248,14 @@ address { font-style: normal; }
      hiervan, dus de verhouding tussen "What's on the menu?" en SIR YES SIR
      blijft overal gelijk — ook waar de maat hieronder wordt overschreven. */
   --wm-size: 19.1cqw;
-  /* Per letter uit de voorstelling gerekend komt de kicker op korps 17,2 bij
-     een woordmerk van 161: dus 0,1068 daarvan. Controle op de totale
-     tekstbreedte: 235,7 tegen 236,7 in het ontwerp. */
-  --kicker-size: calc(var(--wm-size) * .1068);
+  /* Verhouding uit de voorstelling, gemeten op de KAPHOOGTE: die van de
+     kicker is 15,719 en die van het woordmerk 119,156, dus 0,13192.
+     De kaphoogte is hier de juiste ankermaat, want de kicker staat in de
+     voorstelling in een ander font: bij deze maat zou de letterafstand -0,05em
+     moeten zijn om de glyph-afstanden te halen, terwijl de site +0,06em
+     gebruikt. Op de glyph-afstanden rekenen gaf daardoor 0,1068 — 24% te
+     klein. Kaphoogte is ook wat het oog als grootte leest. */
+  --kicker-size: calc(var(--wm-size) * .13192);
   width: 40%;
   margin-left: 2.12%;
 }
@@ -1268,7 +1272,8 @@ address { font-style: normal; }
   letter-spacing: .06em;
   text-transform: uppercase;
   color: #fff;
-  margin-bottom: 0;
+  /* Vangt de hogere kicker op, zodat het woordmerk op zijn basislijnen blijft. */
+  margin-bottom: -.13%;
 }
 
 .footer__wordmark {
