@@ -771,7 +771,7 @@ address { font-style: normal; }
 .split__card { position: relative; z-index: 1; max-width: 34rem; }
 .split__card p + p { margin-top: 1.15rem; }
 .split__tagline em { font-style: italic; }
-.text-link { text-decoration: underline; text-underline-offset: 3px; }
+.text-link { text-decoration: none; }
 
 .split__text--end { align-items: flex-end; text-align: right; }
 .split__text--end .quote-mark { margin-left: auto; }
@@ -955,9 +955,14 @@ address { font-style: normal; }
 .shield-overlay {
   position: absolute;
   z-index: 2;
-  top: -12%;
-  left: 42%;
-  width: min(72%, 64rem);
+  /* Plaats en maat uit de voorstelling, gemeten op de INKT van het schild en
+     niet op het canvas: dat PNG heeft transparante marge, waardoor het kader
+     1318x1102 (1,196) lijkt terwijl de vorm 1282x1035 (1,2386) is — gelijk
+     aan mark.png (1,2400).
+     Omgerekend naar het kader: links 25,3%, boven -0,75%, breed 96%. */
+  top: -.75%;
+  left: 25.3%;
+  width: 96%;
   aspect-ratio: 1024 / 827;
   background: rgba(255, 255, 255, .10);
   -webkit-mask: url('../img/mark.png') no-repeat center / contain;
@@ -1219,6 +1224,11 @@ address { font-style: normal; }
 .footer__lede { width: fit-content; }
 
 .footer__kicker {
+  /* Gecentreerd op het wordmark-blok, zoals in de voorstelling: het midden
+     van de kicker (186,7) valt daar samen met dat van het blok (186,3).
+     .footer__lede is precies zo breed als het blok, dus centreren lijnt
+     daarop uit en niet op de paginabreedte. */
+  text-align: center;
   font-family: var(--font-display);
   font-size: clamp(.85rem, .7rem + .5vw, 1.35rem);
   letter-spacing: .06em;
@@ -1232,9 +1242,12 @@ address { font-style: normal; }
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: clamp(4.75rem, 21vw, 17rem);
-  line-height: .82;
-  letter-spacing: -.025em;
+  /* Maat uit de voorstelling. Uit de glyph-afstanden volgt fontgrootte 161
+     op een kader van 842,25 breed, dus 19,1vw, bij een letterafstand van 0.
+     De regelafstand daar is 133,78, oftewel line-height 0,831. */
+  font-size: clamp(4.75rem, 19.1vw, 17rem);
+  line-height: .831;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--butter);
 }
@@ -1256,16 +1269,14 @@ address { font-style: normal; }
 .footer__contact a {
   display: inline-block;
   padding: .2rem 0;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: .35em;
-  text-decoration-color: rgba(253, 243, 160, .55);
+  /* Geen streep eronder; het geel bij hover en focus maakt duidelijk dat het
+     klikt, en de focusring van de browser blijft staan. */
+  text-decoration: none;
   transition: color .25s var(--ease), text-decoration-color .25s var(--ease);
 }
 .footer__contact a:hover,
 .footer__contact a:focus-visible {
   color: var(--butter);
-  text-decoration-color: var(--butter);
 }
 
 .footer__legal {
