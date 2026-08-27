@@ -778,6 +778,32 @@ address { font-style: normal; }
   .hero__address { margin-top: auto; }
 }
 
+/* De hero op de maten uit de voorstelling (SIR WEBSITE VOORSTELLING (2)),
+   programmatisch opgemeten op de gele pixels van het woordmerk in een beeld
+   van 2000x1414:
+     SIR   kaptop 15,42% en basislijn 60,33% van de hoogte
+           kaphoogte 31,75% van de breedte -> korps 40,34%
+     geel  inkt van 12,20% tot 87,70% van de breedte (de bol is de rechterrand)
+     links inkt vanaf 5,80% van de hoogte, linkerrand op 7,25% van de breedte
+     adres inkt tot 94,98% van de hoogte
+   Alles in cqw, dus t.o.v. het kader; de kaderhoogte is de breedte / 1,4144.
+   Het woordmerk staat absoluut geplaatst: gecentreerd in de flow kwam de
+   basislijn op 68,51% terecht, ruim 8 procentpunt te laag. */
+@media (min-width: 48em) {
+  .hero__frame { padding-top: 3.92cqw; }
+  .hero__top { padding-inline: 7.25%; }
+  .hero__center {
+    --wm: 40.34cqw;
+    position: absolute;
+    left: 0; right: 0;
+    /* basislijn op 42,65cqw (= 60,33% van de hoogte), minus de
+       basislijn-afstand van 0,845 em bij line-height .85 */
+    top: calc(42.65cqw - .845 * var(--wm));
+    flex: none;
+  }
+  .hero__address { margin-top: auto; }
+}
+
 /* ============================================================
    2 / 4 / 5 / 6. SPLIT-SECTIES
    ============================================================ */
