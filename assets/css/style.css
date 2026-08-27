@@ -1252,15 +1252,23 @@ address { font-style: normal; }
   color: var(--butter);
 }
 
+/* "SIR" blijft cursief, "YES" staat recht. Eigen class in plaats van
+   nth-child: die zou stil op het verkeerde woord gaan werken als de tekst
+   ooit wijzigt. */
+.footer__yes { font-style: normal; }
+
 .footer__contact {
   margin-top: auto;
   padding-top: 1.5rem;
   display: grid;
-  gap: .15rem;
+  /* Krap op elkaar: de regelhoogte van 1,6 plus de eigen ruimte hieronder
+     gaf 12 px tussen de teksten. De verticale ruimte van de links blijft
+     staan, want die houdt het tikvlak boven de 24 px. */
+  gap: 0;
   justify-items: end;
   text-align: right;
   font-size: clamp(.9rem, .85rem + .3vw, 1.1rem);
-  line-height: 1.6;
+  line-height: 1.3;
   color: #fff;
   text-shadow: 0 1px 10px rgba(0, 0, 0, .5);
 }
@@ -1309,9 +1317,10 @@ address { font-style: normal; }
      scherm valt het woordmerk daarmee veel te klein uit: het vulde 25% van de
      sectiehoogte tegen 66% in de voorstelling, en het blok werd zelfs smaller
      dan de kicker erboven (145 px tegen 175 px), waardoor die eroverheen hing.
-     Hier bepaalt de breedte de maat: de breedste regel ("YES", 1,874 em inkt)
-     vult de tekstkolom, met 4% lucht. */
-  .footer__wordmark { font-size: calc((100vw - 2 * var(--pad-x)) / 1.95); }
+     Hier bepaalt de breedte de maat: de breedste regel is "YES", en die staat
+     RECHT — inkt 1,980 em, breder dan de cursieve 1,874. Deler 2,06 laat hem
+     de tekstkolom vullen met ongeveer 4% lucht. */
+  .footer__wordmark { font-size: calc((100vw - 2 * var(--pad-x)) / 2.06); }
 
   /* Onder elkaar in plaats van doorlopend: bij afbreken kwam het puntje aan
      het begin van een regel te staan. */
