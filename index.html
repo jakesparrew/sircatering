@@ -420,8 +420,12 @@ document.addEventListener('error', function (e) {
        gelijk blijven. De juridische regel staat er BUITEN, want die bestaat
        niet in de voorstelling. -->
   <div class="footer__poster">
-  <div class="footer__media ph ph--hero" data-label="FOOTER" data-size="2400 × 1600">
-    <img src="images/footer.jpg" alt="" loading="lazy" decoding="async">
+  <div class="footer__media ph ph--hero" data-label="FOOTER" data-size="1890 × 1418">
+    <!-- Staande uitsnede voor telefoons, liggend voor bredere schermen. -->
+    <picture>
+      <source media="(max-width: 47.99em)" srcset="images/footer-mobile.jpg" width="1080" height="1920">
+      <img src="images/footer.jpg" alt="" width="1890" height="1418" loading="lazy" decoding="async">
+    </picture>
   </div>
   <div class="footer__scrim" aria-hidden="true"></div>
   <span class="shield-overlay" aria-hidden="true"></span>

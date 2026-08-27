@@ -1432,7 +1432,6 @@ address { font-style: normal; }
 .footer__legal a:focus-visible { color: var(--butter); }
 
 @media (max-width: 47.99em) {
-  .footer__contact { justify-items: start; text-align: left; }
 
   /* De 19,1vw uit de voorstelling komt van een LIGGEND kader. Op een staand
      scherm valt het woordmerk daarmee veel te klein uit: het vulde 25% van de
@@ -1445,18 +1444,37 @@ address { font-style: normal; }
      een strook van 265 px hoog worden, met een kicker van 11 px en contact van
      6 px: exact in verhouding, maar onleesbaar. Onder 48em laten we het kader
      dus los en schaalt alles weer op leesbaarheid. */
+  /* Maten uit de mobiele mockup, opgemeten op de gele pixels van het
+     woordmerk (1080x1920):
+       SIR  inkt 21,7-36,8% hoog, 20,6-77,0% breed, hart 48,8%
+       YES  inkt 38,2-53,3% hoog, 16,3-82,4% breed, hart 49,4%
+       SIR  inkt 54,8-69,9% hoog, 20,6-76,9% breed, hart 48,8%
+     Daaruit: kaphoogte 26,9% van de breedte -> korps 34,2%; regelafstand
+     16,55% van de hoogte -> line-height 0,861; de regels staan GECENTREERD.
+     Het kader vult het scherm, zodat die percentages op het scherm kloppen. */
   .footer__poster {
     aspect-ratio: auto;
-    min-height: min(92svh, 50rem);
-    padding: max(var(--header-h), 4vh) var(--pad-x) clamp(1.25rem, 3vh, 2rem);
+    min-height: 100svh;
+    /* Geen horizontale padding: cqw rekent op de content-box. */
+    padding: max(var(--header-h), 4vh) 0 clamp(1.25rem, 3vh, 2rem);
   }
-  .footer__lede { width: fit-content; margin-left: 0; }
-  /* Alleen de bronmaat wijzigt; de kicker volgt via --kicker-size en houdt
-     dus dezelfde verhouding tot het woordmerk als op groot scherm. */
-  .footer__lede { --wm-size: calc((100vw - 2 * var(--pad-x)) / 2.06); }
-  .footer__kicker { margin-bottom: clamp(.5rem, 1.5vh, 1rem); }
+  .footer__lede {
+    --wm-size: 34.2cqw;
+    position: absolute;
+    left: 0; right: 0;
+    /* Zet de inktbovenkant van het woordmerk op 21,7% van de hoogte. Met
+       line-height .861 ligt die inktrand 0,0634 em onder de bovenkant van het
+       regelvak; daarboven staan de kicker (0,13192 em) en zijn ondermarge
+       (0,04 em). Samen 0,23532 em van de bronmaat. */
+    top: calc(21.7svh - .23532 * var(--wm-size));
+    width: auto;
+    margin-left: 0;
+  }
+  .footer__wordmark { line-height: .861; }
+  .footer__kicker { margin-bottom: calc(var(--wm-size) * .04); }
   .footer__contact {
-    margin-right: 0;
+    margin-top: auto;
+    margin-right: 7.15%;
     font-size: clamp(.9rem, .85rem + .3vw, 1.1rem);
     line-height: 1.3;
   }
