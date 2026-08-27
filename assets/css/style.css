@@ -543,12 +543,27 @@ address { font-style: normal; }
    ============================================================ */
 .hero {
   position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  /* Diep rood uit de foto zelf bemonsterd (randen lopen van rgb(111,1,0) tot
+     rgb(183,3,4)); dit is de ruimte naast het kader op brede schermen. */
+  background: rgb(124, 1, 1);
+  color: #fff;
+  overflow: hidden;
+}
+/* Het kader heeft de verhouding van de foto en past zich binnen het scherm:
+   de smalste kant bepaalt de maat, dus de hele foto blijft zichtbaar in
+   plaats van een uitsnede. Alle maten erbinnen staan in cqw, dus de tekst
+   houdt dezelfde verhouding tot de foto op elk formaat. */
+.hero__frame {
+  position: relative;
+  container-type: inline-size;
+  width: min(100%, calc(100svh * 2000 / 1414));
+  aspect-ratio: 2000 / 1414;
   display: flex;
   flex-direction: column;
-  min-height: 100svh;
   padding: clamp(1.25rem, 4vh, 2.5rem) var(--pad-x) clamp(1.75rem, 5vh, 3rem);
-  background: var(--charcoal);
-  color: #fff;
   overflow: hidden;
 }
 .hero__media { position: absolute; inset: 0; }
@@ -572,7 +587,7 @@ address { font-style: normal; }
   background:
     linear-gradient(180deg, rgba(32,32,32,.22) 0%, rgba(32,32,32,.04) 24%, rgba(32,32,32,.04) 72%, rgba(32,32,32,.30) 100%);
 }
-.hero > *:not(.hero__media):not(.hero__scrim) { position: relative; z-index: 3; }
+.hero__frame > *:not(.hero__media):not(.hero__scrim) { position: relative; z-index: 3; }
 
 .hero__top {
   display: flex;
@@ -597,7 +612,10 @@ address { font-style: normal; }
 .hero__center {
   /* De maat van het woordmerk staat hier, zodat de tagline er exact op kan
      uitlijnen zonder te gokken. */
-  --wm: min(clamp(4.5rem, 42vw, 40rem), 58svh);
+  /* Maat t.o.v. het KADER (cqw), niet het scherm: zo blijft de verhouding
+     tussen de tekst en de foto gelijk op elk formaat. De svh-grens is niet
+     meer nodig, want het kader past al binnen het scherm. */
+  --wm: 42cqw;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -719,6 +737,20 @@ address { font-style: normal; }
 .hero__address a:hover,
 .hero__address a:focus-visible { color: var(--butter); }
 
+
+/* Op een staand scherm past een LIGGENDE foto alleen volledig in beeld als
+   het kader een band wordt: op 375x812 zou dat 375x265 zijn met 273 px rood
+   boven en onder, dus twee derde leeg. Daar vult de hero daarom het scherm en
+   valt er een deel van de foto weg (ongeveer 60% blijft zichtbaar).
+   Een staande uitsnede van de foto zou dit oplossen; die is er nog niet. */
+@media (max-width: 47.99em) {
+  .hero__frame {
+    width: 100%;
+    aspect-ratio: auto;
+    min-height: 100svh;
+  }
+  .hero__center { --wm: min(42cqw, 58svh); }
+}
 
 /* ============================================================
    2 / 4 / 5 / 6. SPLIT-SECTIES
