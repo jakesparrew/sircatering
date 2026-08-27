@@ -1219,7 +1219,10 @@ address { font-style: normal; }
   /* GEEN horizontale padding: cqw rekent op de content-box, dus met padding
      zouden alle korpsen en percentages een fractie te klein uitvallen. De
      zijmarges staan daarom op de kinderen zelf. */
-  padding: 9.806% 0 4.11%;
+  /* 10,62% zet de basislijn van de kicker op 17,69% van de hoogte; met
+     line-height 1 ligt die basislijn op 0,92em onder de kaderrand. De
+     regelafstand van het woordmerk levert de rest. */
+  padding: 10.62% 0 4.11%;
   overflow: hidden;
 }
 .footer__media { position: absolute; inset: 0; }
@@ -1240,7 +1243,18 @@ address { font-style: normal; }
 /* Hart van het blok op 22,12% van de kaderbreedte: vak van 40% breed dat op
    2,12% begint. 40% is ruim genoeg voor de breedste regel (de RECHTE "YES",
    37,8%), zodat er niets afbreekt. */
-.footer__lede { width: 40%; margin-left: 2.12%; }
+.footer__lede {
+  /* Eén maat als bron voor het hele blok. De kicker is een vaste fractie
+     hiervan, dus de verhouding tussen "What's on the menu?" en SIR YES SIR
+     blijft overal gelijk — ook waar de maat hieronder wordt overschreven. */
+  --wm-size: 19.1cqw;
+  /* Per letter uit de voorstelling gerekend komt de kicker op korps 17,2 bij
+     een woordmerk van 161: dus 0,1068 daarvan. Controle op de totale
+     tekstbreedte: 235,7 tegen 236,7 in het ontwerp. */
+  --kicker-size: calc(var(--wm-size) * .1068);
+  width: 40%;
+  margin-left: 2.12%;
+}
 
 .footer__kicker {
   /* Gecentreerd op het wordmark-blok, zoals in de voorstelling: het midden
@@ -1249,7 +1263,7 @@ address { font-style: normal; }
      daarop uit en niet op de paginabreedte. */
   text-align: center;
   font-family: var(--font-display);
-  font-size: 2.94cqw;
+  font-size: var(--kicker-size);
   line-height: 1;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -1265,7 +1279,7 @@ address { font-style: normal; }
   /* Maat uit de voorstelling. Uit de glyph-afstanden volgt fontgrootte 161
      op een kader van 842,25 breed, dus 19,1vw, bij een letterafstand van 0.
      De regelafstand daar is 133,78, oftewel line-height 0,831. */
-  font-size: 19.1cqw;
+  font-size: var(--wm-size);
   line-height: .831;
   text-align: center;
   letter-spacing: 0;
@@ -1365,11 +1379,10 @@ address { font-style: normal; }
     padding: max(var(--header-h), 4vh) var(--pad-x) clamp(1.25rem, 3vh, 2rem);
   }
   .footer__lede { width: fit-content; margin-left: 0; }
-  .footer__kicker {
-    font-size: clamp(.85rem, .7rem + .5vw, 1.35rem);
-    margin-bottom: clamp(.5rem, 1.5vh, 1rem);
-  }
-  .footer__wordmark { font-size: calc((100vw - 2 * var(--pad-x)) / 2.06); }
+  /* Alleen de bronmaat wijzigt; de kicker volgt via --kicker-size en houdt
+     dus dezelfde verhouding tot het woordmerk als op groot scherm. */
+  .footer__lede { --wm-size: calc((100vw - 2 * var(--pad-x)) / 2.06); }
+  .footer__kicker { margin-bottom: clamp(.5rem, 1.5vh, 1rem); }
   .footer__contact {
     margin-right: 0;
     font-size: clamp(.9rem, .85rem + .3vw, 1.1rem);
