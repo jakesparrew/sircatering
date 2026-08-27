@@ -305,7 +305,11 @@ address { font-style: normal; }
   text-transform: uppercase;
   white-space: nowrap;
 }
-.ph > img {
+/* Ook via <picture>: dat element krijgt display: contents, zodat het beeld
+   zich gedraagt als direct kind en de absolute plaatsing blijft werken. */
+.ph > picture { display: contents; }
+.ph > img,
+.ph > picture > img {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -313,7 +317,8 @@ address { font-style: normal; }
   object-fit: cover;
 }
 /* Ontbrekende afbeelding → plaatshouder blijft zichtbaar */
-.ph > img[data-missing] { display: none; }
+.ph > img[data-missing],
+.ph > picture > img[data-missing] { display: none; }
 
 /* Volvlak-beelden (hero, quote, contact, footer) zijn zwart-wit */
 .ph--hero { background-color: var(--charcoal); }
@@ -563,7 +568,10 @@ address { font-style: normal; }
   aspect-ratio: 2000 / 1414;
   display: flex;
   flex-direction: column;
-  padding: clamp(1.25rem, 4vh, 2.5rem) var(--pad-x) clamp(1.75rem, 5vh, 3rem);
+  /* GEEN horizontale padding: cqw rekent op de content-box, dus met padding
+     zou het woordmerk een fractie te klein uitvallen. De zijmarges staan op
+     de kinderen. */
+  padding: clamp(1.25rem, 4vh, 2.5rem) 0 clamp(1.75rem, 5vh, 3rem);
   overflow: hidden;
 }
 .hero__media { position: absolute; inset: 0; }
@@ -587,9 +595,13 @@ address { font-style: normal; }
   background:
     linear-gradient(180deg, rgba(32,32,32,.22) 0%, rgba(32,32,32,.04) 24%, rgba(32,32,32,.04) 72%, rgba(32,32,32,.30) 100%);
 }
-.hero__frame > *:not(.hero__media):not(.hero__scrim) { position: relative; z-index: 3; }
+.hero__frame > *:not(.hero__media):not(.hero__scrim):not(.hero__center) { position: relative; z-index: 3; }
+/* Apart en met lage specificiteit, zodat de mobiele regel de plaatsing kan
+   overnemen. */
+.hero__center { position: relative; z-index: 3; }
 
 .hero__top {
+  padding-inline: var(--pad-x);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -719,6 +731,7 @@ address { font-style: normal; }
 .hero__tagline { color: var(--vanille); }
 
 .hero__address {
+  padding-inline: var(--pad-x);
   text-align: center;
   font-family: var(--font-display);
   font-size: clamp(.72rem, .6rem + .35vw, 1rem);
@@ -749,7 +762,20 @@ address { font-style: normal; }
     aspect-ratio: auto;
     min-height: 100svh;
   }
-  .hero__center { --wm: min(42cqw, 58svh); }
+  /* De staande foto heeft de bovenrand van de kom op 47,9% van de hoogte. In
+     de mockup ligt de basislijn van SIR op 41,1% en eindigt de tagline op
+     46,4%, dus net erboven. Gecentreerd in de flow kwam SIR op 53,3% en viel
+     de tekst over de kom. Daarom hier absoluut geplaatst: de basislijn ligt
+     0,845 em onder de bovenkant van het woordmerk (line-height .85 met de
+     metriek van LEMON MILK), dus die aftrekken van 41,1svh. */
+  .hero__center {
+    position: absolute;
+    left: 0; right: 0;
+    top: calc(41.1svh - .845 * var(--wm));
+    flex: none;
+    --wm: min(42cqw, 58svh);
+  }
+  .hero__address { margin-top: auto; }
 }
 
 /* ============================================================

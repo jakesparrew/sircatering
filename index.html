@@ -131,7 +131,14 @@ document.addEventListener('error', function (e) {
          het scherm, zodat de hele foto te zien is in plaats van een uitsnede. -->
     <div class="hero__frame">
     <div class="hero__media ph ph--hero ph--color" data-label="HERO" data-size="2000 × 1414">
-      <img src="images/hero.jpg" alt="" fetchpriority="high" decoding="async">
+      <!-- Twee uitsnedes van dezelfde opname: liggend voor brede schermen,
+           staand voor telefoons. Een staande uitsnede uit de liggende foto zou
+           niets toevoegen — dat zijn exact dezelfde pixels als cover daar al
+           toont — dus hiervoor is een eigen bestand nodig. -->
+      <picture>
+        <source media="(max-width: 47.99em)" srcset="images/hero-mobile.jpg" width="1080" height="1920">
+        <img src="images/hero.jpg" alt="" width="2000" height="1414" fetchpriority="high" decoding="async">
+      </picture>
     </div>
     <div class="hero__scrim" aria-hidden="true"></div>
 
