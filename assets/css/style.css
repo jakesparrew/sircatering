@@ -1195,15 +1195,31 @@ address { font-style: normal; }
    ============================================================ */
 .footer {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: min(92svh, 50rem);
-  /* Onderaan krap gehouden om ruimte te maken voor het grote woordmerk, maar
-     bovenaan minstens de hoogte van de vaste header — anders schuift die over
-     "What's on the menu?" heen. */
-  padding: max(var(--header-h), 4vh) var(--pad-x) clamp(1.25rem, 3vh, 2rem);
   background: var(--charcoal);
   color: #fff;
+}
+/* Het kader uit de voorstelling: 842,25 x 595,5. Alle maten en posities
+   erbinnen staan in procenten van DIT kader (cqw / %), zodat de verhoudingen
+   op elke breedte identiek blijven aan het ontwerp.
+   Opgemeten in de voorstelling, als deel van de kaderbreedte:
+     kicker      basislijn 17,69% van de hoogte, korps 2,94%
+     woordmerk   basislijnen 40,35 / 62,82 / 85,28% van de hoogte
+                 inkt van 5,23% tot 39,02%, dus hart op 22,12%
+     contact     basislijnen 91,10 / 93,68%, rechterrand 7,15% van de rand
+     schild      links 25,32%, boven -0,75%, breed 96%
+   De bovenmarge van 9,806% zet de kicker op zijn basislijn; de regelafstand
+   van het woordmerk (line-height 0,831) levert de andere basislijnen dan
+   vanzelf. */
+.footer__poster {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 842.25 / 595.5;
+  display: flex;
+  flex-direction: column;
+  /* GEEN horizontale padding: cqw rekent op de content-box, dus met padding
+     zouden alle korpsen en percentages een fractie te klein uitvallen. De
+     zijmarges staan daarom op de kinderen zelf. */
+  padding: 9.806% 0 4.11%;
   overflow: hidden;
 }
 .footer__media { position: absolute; inset: 0; }
@@ -1221,7 +1237,10 @@ address { font-style: normal; }
 /* De kicker hoort gecentreerd boven het wordmark-blok. Deze wrapper is
    precies zo breed als dat blok, zodat centreren daarop uitlijnt en niet
    op de volle paginabreedte. */
-.footer__lede { width: fit-content; }
+/* Hart van het blok op 22,12% van de kaderbreedte: vak van 40% breed dat op
+   2,12% begint. 40% is ruim genoeg voor de breedste regel (de RECHTE "YES",
+   37,8%), zodat er niets afbreekt. */
+.footer__lede { width: 40%; margin-left: 2.12%; }
 
 .footer__kicker {
   /* Gecentreerd op het wordmark-blok, zoals in de voorstelling: het midden
@@ -1230,11 +1249,12 @@ address { font-style: normal; }
      daarop uit en niet op de paginabreedte. */
   text-align: center;
   font-family: var(--font-display);
-  font-size: clamp(.85rem, .7rem + .5vw, 1.35rem);
+  font-size: 2.94cqw;
+  line-height: 1;
   letter-spacing: .06em;
   text-transform: uppercase;
   color: #fff;
-  margin-bottom: clamp(.5rem, 1.5vh, 1rem);
+  margin-bottom: 0;
 }
 
 .footer__wordmark {
@@ -1245,8 +1265,9 @@ address { font-style: normal; }
   /* Maat uit de voorstelling. Uit de glyph-afstanden volgt fontgrootte 161
      op een kader van 842,25 breed, dus 19,1vw, bij een letterafstand van 0.
      De regelafstand daar is 133,78, oftewel line-height 0,831. */
-  font-size: clamp(4.75rem, 19.1vw, 17rem);
+  font-size: 19.1cqw;
   line-height: .831;
+  text-align: center;
   letter-spacing: 0;
   text-transform: uppercase;
   color: var(--butter);
@@ -1259,6 +1280,7 @@ address { font-style: normal; }
 
 .footer__contact {
   margin-top: auto;
+  margin-right: 7.15%;
   padding-top: 1.5rem;
   display: grid;
   /* Krap op elkaar: de regelhoogte van 1,6 plus de eigen ruimte hieronder
@@ -1267,20 +1289,31 @@ address { font-style: normal; }
   gap: 0;
   justify-items: end;
   text-align: right;
-  font-size: clamp(.9rem, .85rem + .3vw, 1.1rem);
-  line-height: 1.3;
+  font-size: 1.63cqw;
+  line-height: 1.122;
   color: #fff;
   text-shadow: 0 1px 10px rgba(0, 0, 0, .5);
 }
 /* Deze twee regels zijn de call-to-action van de pagina; ze moeten er
    onmiskenbaar klikbaar uitzien, ook boven op een foto. */
 .footer__contact a {
+  position: relative;
   display: inline-block;
-  padding: .2rem 0;
+  /* Geen eigen ruimte: die kwam bovenop de regelafstand en maakte de twee
+     regels verder uiteen dan in de voorstelling. */
+  padding: 0;
   /* Geen streep eronder; het geel bij hover en focus maakt duidelijk dat het
      klikt, en de focusring van de browser blijft staan. */
   text-decoration: none;
   transition: color .25s var(--ease), text-decoration-color .25s var(--ease);
+}
+/* Houdt de regels aantikbaar nu hun eigen ruimte eruit is; het vlak telt niet
+   mee in de opmaak, dus de regelafstand blijft die van de voorstelling. */
+.footer__contact a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: -4px; bottom: -4px;
 }
 .footer__contact a:hover,
 .footer__contact a:focus-visible {
@@ -1290,6 +1323,8 @@ address { font-style: normal; }
 .footer__legal {
   position: relative;
   z-index: 3;
+  padding-inline: var(--pad-x);
+  padding-bottom: clamp(1.25rem, 3vh, 2rem);
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -1320,7 +1355,26 @@ address { font-style: normal; }
      Hier bepaalt de breedte de maat: de breedste regel is "YES", en die staat
      RECHT — inkt 1,980 em, breder dan de cursieve 1,874. Deler 2,06 laat hem
      de tekstkolom vullen met ongeveer 4% lucht. */
+  /* Het kader van de voorstelling is LIGGEND (1,414). Op een telefoon zou dat
+     een strook van 265 px hoog worden, met een kicker van 11 px en contact van
+     6 px: exact in verhouding, maar onleesbaar. Onder 48em laten we het kader
+     dus los en schaalt alles weer op leesbaarheid. */
+  .footer__poster {
+    aspect-ratio: auto;
+    min-height: min(92svh, 50rem);
+    padding: max(var(--header-h), 4vh) var(--pad-x) clamp(1.25rem, 3vh, 2rem);
+  }
+  .footer__lede { width: fit-content; margin-left: 0; }
+  .footer__kicker {
+    font-size: clamp(.85rem, .7rem + .5vw, 1.35rem);
+    margin-bottom: clamp(.5rem, 1.5vh, 1rem);
+  }
   .footer__wordmark { font-size: calc((100vw - 2 * var(--pad-x)) / 2.06); }
+  .footer__contact {
+    margin-right: 0;
+    font-size: clamp(.9rem, .85rem + .3vw, 1.1rem);
+    line-height: 1.3;
+  }
 
   /* Onder elkaar in plaats van doorlopend: bij afbreken kwam het puntje aan
      het begin van een regel te staan. */
