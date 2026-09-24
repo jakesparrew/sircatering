@@ -8,8 +8,8 @@ er eentje vervangt of bijzet.
 | Bestand | Waar op de site | Bron |
 |---|---|---|
 | `hero.jpg` | Openingsscherm | `sirvice2.png` |
-| `quote.jpg` | Quote-sectie | `about3.png` |
-| `contact.jpg` | Contact & Booking | `moments5.png` |
+| `quote.jpg` | Quote-sectie | `SIR ABOUT FINAL/73.png` |
+| `contact.jpg` | Contact & Booking | `SIR MOMENTS FINAL/112.jpg` |
 | `footer.jpg` | Afsluiter "Sir Yes Sir" | bruidspaar uit `design/SIR WEBSITE VOORSTELLING.pdf` |
 | `reviews.jpg` | Reviews-sectie | aangeleverd |
 | `hero-mobile.jpg` | Openingsscherm op gsm (staand) | aangeleverd |
@@ -18,7 +18,7 @@ er eentje vervangt of bijzet.
 | `sirvice-1` … `sirvice-13` | Sirvice-carrousel | `SIR SIRVICE FINAL/` |
 | `food-1` … `food-13` | Food-carrousel | `SIR FOOD FINAL/` |
 | `moments-1` … `moments-11` | Moments-carrousel | `SIR MOMENTS FINAL/` |
-| `og-image.jpg` | Voorbeeld bij het delen van een link | `sirvice2.png` |
+| `og-image.jpg` | Voorbeeld bij het delen van een link | `SIR FOOD FINAL/84.png` |
 
 De vier volvlak-beelden worden door de site **automatisch zwart-wit** gezet,
 net als in het ontwerp. De carrouselfoto's blijven in kleur.
