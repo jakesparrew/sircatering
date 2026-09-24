@@ -1,14 +1,16 @@
 {
   "headers": [
     {
+      "//": "Foto's en CSS houden hun naam terwijl de inhoud wijzigt. Met 'immutable' blijft een bezoeker daardoor een jaar lang de oude versie zien. Daarom altijd navragen: onveranderd levert een goedkope 304 op.",
       "source": "/images/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
     },
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
     },
     {
+      "//": "Lettertypes dragen hun versie in de bestandsnaam en wijzigen niet.",
       "source": "/fonts/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
