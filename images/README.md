@@ -8,8 +8,8 @@ er eentje vervangt of bijzet.
 | Bestand | Waar op de site | Bron |
 |---|---|---|
 | `hero.jpg` | Openingsscherm | `sirvice2.png` |
-| `quote.jpg` | Quote-sectie | `SIR ABOUT FINAL/73.png` |
-| `contact.jpg` | Contact & Booking | `SIR MOMENTS FINAL/112.jpg` |
+| `quote.jpg` | Quote-sectie | `about3.png` |
+| `contact.jpg` | Contact & Booking | `moments5.png` |
 | `footer.jpg` | Afsluiter "Sir Yes Sir" | bruidspaar uit `design/SIR WEBSITE VOORSTELLING.pdf` |
 | `reviews.jpg` | Reviews-sectie | aangeleverd |
 | `hero-mobile.jpg` | Openingsscherm op gsm (staand) | aangeleverd |
