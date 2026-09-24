@@ -16,7 +16,7 @@ er eentje vervangt of bijzet.
 | `footer-mobile.jpg` | Afsluiter op gsm (staand) | aangeleverd |
 | `about-1` … `about-12` | About-carrousel | door SIR aangeleverde selectie |
 | `sirvice-1` … `sirvice-13` | Sirvice-carrousel | `SIR SIRVICE FINAL/` |
-| `food-1` … `food-13` | Food-carrousel | `SIR FOOD FINAL/` |
+| `food-1` … `food-14` | Food-carrousel | `SIR FOOD FINAL/` |
 | `moments-1` … `moments-11` | Moments-carrousel | `SIR MOMENTS FINAL/` |
 | `og-image.jpg` | Voorbeeld bij het delen van een link | `SIR FOOD FINAL/84.png` |
 
