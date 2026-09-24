@@ -14,7 +14,7 @@ er eentje vervangt of bijzet.
 | `reviews.jpg` | Reviews-sectie | aangeleverd |
 | `hero-mobile.jpg` | Openingsscherm op gsm (staand) | aangeleverd |
 | `footer-mobile.jpg` | Afsluiter op gsm (staand) | aangeleverd |
-| `about-1` … `about-11` | About-carrousel | door SIR aangeleverde selectie |
+| `about-1` … `about-12` | About-carrousel | door SIR aangeleverde selectie |
 | `sirvice-1` … `sirvice-13` | Sirvice-carrousel | `SIR SIRVICE FINAL/` |
 | `food-1` … `food-13` | Food-carrousel | `SIR FOOD FINAL/` |
 | `moments-1` … `moments-11` | Moments-carrousel | `SIR MOMENTS FINAL/` |
