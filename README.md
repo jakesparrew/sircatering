@@ -60,10 +60,10 @@ op beide juridische pagina's en in de structured data.
 > definitief live gaat — en vul aan wat ik niet kon weten: een telefoonnummer
 > (de About-tekst zegt "bel ons"), en of er algemene voorwaarden bij moeten.
 
-**Deze site verzamelt niets.** Geen cookies, geen statistieken, geen
-formulieren, en sinds Poppins zelf gehost wordt ook **geen enkel verzoek naar
-een externe partij**. Daarom is er geen cookiebanner nodig. Voeg je later
-analytics of een formulier toe, pas dan het privacybeleid aan.
+**Statistiek:** de SuperHoreca site-tag (cookieloos, slaat niets op het toestel
+op, respecteert Global Privacy Control) staat op alle drie de pagina's. Geen
+cookies, dus geen cookiebanner nodig. Voeg je ooit een tracker met cookies of
+een formulier toe, pas dan het privacybeleid aan.
 
 ## Structuur
 
