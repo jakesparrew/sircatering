@@ -1470,7 +1470,16 @@ address { font-style: normal; }
     padding: max(var(--header-h), 4vh) 0 clamp(1.25rem, 3vh, 2rem);
   }
   .footer__lede {
-    --wm-size: 34.2cqw;
+    /* 34,2% van de breedte is de maat uit de voorstelling. Op een scherm dat
+       breed maar laag is — een venster in liggende stand — wordt het woordmerk
+       daarmee hoger dan het kader: de derde regel liep eronderuit en botste op
+       de contactregel. De tweede grens rekent daarom op de hoogte.
+       Afgeleid: de inktbovenkant staat op 21,7% van de hoogte, het blok zelf is
+       2,546 maal de korpsmaat hoog, en onderaan gaat er een vaste strook af
+       voor de koptekst, de contactregel en de ondermarge (samen ~170px).
+       Op een telefoon in staande stand is de breedte altijd de kleinste van de
+       twee, dus daar verandert er niets. */
+    --wm-size: max(2rem, min(34.2cqw, calc((78.3svh - 170px) / 2.546)));
     position: absolute;
     left: 0; right: 0;
     /* Zet de inktbovenkant van het woordmerk op 21,7% van de hoogte. Met
