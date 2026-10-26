@@ -1039,26 +1039,6 @@ address { font-style: normal; }
 /* De naam van de fotograaf in het geel, even ingehouden als de rest. */
 .photo-credit__name { color: var(--butter); opacity: .38; }
 
-/* Het schild als grote, lichte overlay óver de foto — rechts van het midden,
-   boven- en onderkant aflopend, zoals in de voorstelling. */
-.shield-overlay {
-  position: absolute;
-  z-index: 2;
-  /* Plaats en maat uit de voorstelling, gemeten op de INKT van het schild en
-     niet op het canvas: dat PNG heeft transparante marge, waardoor het kader
-     1318x1102 (1,196) lijkt terwijl de vorm 1282x1035 (1,2386) is — gelijk
-     aan mark.png (1,2400).
-     Omgerekend naar het kader: links 25,3%, boven -0,75%, breed 96%. */
-  top: -.75%;
-  left: 25.3%;
-  width: 96%;
-  aspect-ratio: 1024 / 827;
-  background: rgba(255, 255, 255, .10);
-  -webkit-mask: url('../img/mark.png') no-repeat center / contain;
-  mask: url('../img/mark.png') no-repeat center / contain;
-  pointer-events: none;
-}
-
 /* ============================================================
    6. CONTACT & BOOKING — donker, over de Porsche
    ============================================================ */
