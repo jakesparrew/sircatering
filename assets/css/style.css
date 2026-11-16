@@ -1612,3 +1612,161 @@ address { font-style: normal; }
   padding-bottom: .2rem;
 }
 .legal__back:hover { border-color: var(--olive); }
+
+/* ============================================================
+   TIJDELIJKE POP-UP — Takeaway Xmas Edition
+   Een <dialog>: de browser regelt zelf Escape, de focus en het
+   stapelen bovenop de rest van de pagina.
+   ============================================================ */
+.promo {
+  width: min(58rem, 92vw);
+  max-height: min(46rem, 90svh);
+  padding: clamp(.6rem, 1.4vw, 1rem);
+  border: 0;
+  border-radius: clamp(14px, 1.6vw, 22px);
+  background: #fff;
+  color: var(--charcoal);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+  overflow: visible;
+}
+.promo::backdrop {
+  /* De site erachter wordt wazig; het donkere waas houdt de kaart leesbaar. */
+  background: rgba(16, 16, 16, .45);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.promo[open] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr);
+  gap: clamp(.75rem, 1.6vw, 1.25rem);
+  align-items: stretch;
+}
+
+/* --- Sluitknop: geel bolletje met zwart kruisje, in de hoek ---- */
+.promo__close {
+  position: absolute;
+  z-index: 2;            /* boven de foto, die verderop in de broncode staat */
+  top: .7rem;
+  right: .7rem;
+  width: 1.6rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  /* Het zwarte randje houdt het bolletje ook op de witte kaart duidelijk;
+     botergeel op wit alleen zou te flets zijn. */
+  border: 1.5px solid #000;
+  border-radius: 50%;
+  background: var(--butter);
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+}
+.promo__close svg { width: 56%; height: 56%; }
+.promo__close:hover { background: #fff; }
+
+/* --- Foto met de knop erover ---------------------------------- */
+.promo__media {
+  position: relative;
+  /* Staande uitsnede, zoals in het ontwerp: zo is de kaart hoger dan breed
+     verdeeld en komt de kring glazen vol in beeld. */
+  aspect-ratio: 5 / 6;
+  border-radius: clamp(10px, 1.2vw, 16px);
+  overflow: hidden;
+  background: var(--charcoal);
+}
+.promo__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.promo__cta {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(.9rem, 2.2vw, 1.75rem);
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+  padding: .5em 1.15em .5em .5em;
+  border-radius: 999px;
+  background: var(--butter);
+  color: var(--charcoal);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(.85rem, .62rem + .7vw, 1.15rem);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .35);
+}
+.promo__cta-icon {
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--charcoal);
+  color: var(--butter);
+}
+.promo__cta-icon svg { width: 60%; height: 60%; }
+.promo__cta:hover { background: #fff; }
+
+/* --- Tekstkolom ------------------------------------------------ */
+.promo__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(.7rem, 1.4vh, 1.1rem);
+  padding: clamp(.5rem, 2vw, 1.75rem) clamp(.75rem, 2vw, 1.5rem);
+  overflow-y: auto;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: clamp(.78rem, .62rem + .42vw, 1rem);
+  line-height: 1.45;
+}
+.promo__body p { margin: 0; }
+.promo__hey,
+.promo__enjoy {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  font-size: 1.1em;
+}
+.promo__body strong { text-transform: uppercase; }
+
+/* --- commotie x SIR. ------------------------------------------- */
+.promo__lockup {
+  display: grid;
+  justify-items: center;
+  gap: .25em;
+  margin-top: .35em;
+}
+.promo__commotie {
+  /* Het aangeleverde logo, bijgesneden tot op de lijnen. De hoogte volgt uit
+     de eigen verhouding van het beeld (760 x 143), dus die blijft kloppen. */
+  display: block;
+  width: min(14em, 100%);
+  height: auto;
+}
+.promo__x { font-size: 1em; color: #6a6a6a; }
+.promo__sir {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 2.3em;
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+
+/* --- Onder elkaar op een smal scherm --------------------------- */
+@media (max-width: 47.99em) {
+  .promo { width: min(26rem, 92vw); max-height: 90svh; overflow-y: auto; }
+  .promo[open] { grid-template-columns: 1fr; }
+  /* Liggende uitsnede: de kring glazen staat in het midden, dus boven en
+     onder wegsnijden kost niets en scheelt hoogte op een korte telefoon. */
+  .promo__media { aspect-ratio: 3 / 2; }
+  .promo__body { padding-bottom: .5rem; }
+}

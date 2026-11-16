@@ -480,6 +480,45 @@ document.addEventListener('error', function (e) {
   </div>
 </footer>
 
+<!-- ============================================================
+     TIJDELIJKE POP-UP — Takeaway Xmas Edition
+     Verschijnt alleen binnen het venster dat in main.js staat
+     (17 november t/m 18 december). Voeg ?popup=1 aan de URL toe om
+     hem buiten die periode te bekijken, ?popup=0 om hem te onderdrukken.
+     ============================================================ -->
+<dialog class="promo" id="promo" aria-labelledby="promo-title">
+  <button class="promo__close" type="button" aria-label="Sluiten" data-promo-close>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div class="promo__media">
+    <img src="images/popup-xmas.webp" alt="" width="1456" height="1094" loading="lazy" decoding="async">
+    <a class="promo__cta" href="https://preview.mailerlite.com/q5g3m9t4m1" target="_blank" rel="noopener">
+      <span class="promo__cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M9 6l7 6-7 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      Book now
+    </a>
+  </div>
+
+  <div class="promo__body">
+    <p class="promo__hey" id="promo-title">Hey you!</p>
+    <p>Dit jaar hebben we iets bijzonders voor jullie in petto!<br>
+       <strong>Onze takeaway xmas edition!</strong></p>
+    <p>Voor deze feestelijke editie slaan we de handen in elkaar met COMMOTIE.<br>
+       Het resultaat? Een uniek feestmenu waarin het beste van beide keukens samenkomt.<br>
+       Een bijzondere culinaire ervaring die we voor even tot bij jullie thuis brengen.</p>
+    <p class="promo__enjoy">Enjoy!</p>
+    <p class="promo__lockup">
+      <img class="promo__commotie" src="images/popup-commotie.png" alt="commotie" width="760" height="143" loading="lazy" decoding="async">
+      <span class="promo__x">x</span>
+      <span class="promo__sir">SIR.</span>
+    </p>
+  </div>
+</dialog>
+
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -326,7 +326,63 @@
   })();
 
   /* ==========================================================
-     7. JAARTAL IN DE FOOTER
+     7. TIJDELIJKE POP-UP — Takeaway Xmas Edition
+
+     Loopt van 17 november tot en met 18 december. Pas de twee
+     datums hieronder aan om de actie te verlengen of te
+     verplaatsen; de pop-up verdwijnt daarna vanzelf.
+     Met ?popup=1 in de URL verschijnt hij ook buiten die periode
+     (om te bekijken), met ?popup=0 blijft hij weg.
+     ========================================================== */
+  (function promo() {
+    var VAN  = new Date(2026, 10, 17, 0, 0, 0);   /* 17 november 2026 */
+    var TOT  = new Date(2026, 11, 18, 23, 59, 59); /* 18 december 2026 */
+    var SLEUTEL = 'sir-promo-xmas-2026';
+
+    var dialog = document.getElementById('promo');
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+
+    var query = new URLSearchParams(window.location.search).get('popup');
+    if (query === '0') return;
+
+    if (query !== '1') {
+      var nu = new Date();
+      if (nu < VAN || nu > TOT) return;
+      /* Eenmaal weggeklikt blijft hij weg zolang dit tabblad openstaat. */
+      try {
+        if (window.sessionStorage.getItem(SLEUTEL) === 'weg') return;
+      } catch (e) { /* privévenster: dan toch tonen */ }
+    }
+
+    function onthoud() {
+      try { window.sessionStorage.setItem(SLEUTEL, 'weg'); } catch (e) {}
+    }
+
+    dialog.addEventListener('close', onthoud);
+    dialog.addEventListener('cancel', onthoud);
+
+    dialog.querySelectorAll('[data-promo-close]').forEach(function (btn) {
+      btn.addEventListener('click', function () { dialog.close(); });
+    });
+
+    /* Klikken naast de kaart sluit hem ook: bij een <dialog> ligt de
+       achtergrond binnen het element zelf, dus we kijken of de klik
+       buiten de rechthoek van de kaart viel. */
+    dialog.addEventListener('click', function (ev) {
+      if (ev.target !== dialog) return;
+      var r = dialog.getBoundingClientRect();
+      var binnen = ev.clientX >= r.left && ev.clientX <= r.right &&
+                   ev.clientY >= r.top  && ev.clientY <= r.bottom;
+      if (!binnen) dialog.close();
+    });
+
+    /* Even wachten, zodat de bezoeker eerst de pagina ziet. */
+    if (reduceMotion) dialog.showModal();
+    else window.setTimeout(function () { dialog.showModal(); }, 900);
+  })();
+
+  /* ==========================================================
+     8. JAARTAL IN DE FOOTER
      ========================================================== */
   (function year() {
     var el = document.querySelector('[data-year]');
