@@ -1619,9 +1619,25 @@ address { font-style: normal; }
    stapelen bovenop de rest van de pagina.
    ============================================================ */
 .promo {
+  --promo-pad: clamp(.6rem, 1.4vw, 1rem);
+  --promo-max-h: min(46rem, 90svh);
   width: min(58rem, 92vw);
-  max-height: min(46rem, 90svh);
-  padding: clamp(.6rem, 1.4vw, 1rem);
+  max-width: 92vw;
+  max-height: var(--promo-max-h);
+  /* Een modaal venster wordt standaard gecentreerd met inset:0 + margin:auto.
+     WebKit (Safari) rekt de kaart dan uit tot de max-hoogte, met een brede
+     witte band boven en onder de inhoud. Daarom zetten we hem zelf in het
+     midden: met alleen een bovenhoek en een verschuiving blijft de hoogte
+     gewoon die van de inhoud, in elke browser. */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  height: auto;
+  padding: var(--promo-pad);
   border: 0;
   border-radius: clamp(14px, 1.6vw, 22px);
   background: #fff;
@@ -1639,7 +1655,11 @@ address { font-style: normal; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr);
   gap: clamp(.75rem, 1.6vw, 1.25rem);
-  align-items: stretch;
+  /* NIET stretch: bij 'stretch' rekent Safari de breedte van de foto uit haar
+     uitgerekte hoogte (door de aspect-ratio hieronder) en loopt het beeld over
+     de tekstkolom heen. Met 'center' bepaalt de kolombreedte het beeld, zoals
+     het hoort, en gedragen alle browsers zich gelijk. */
+  align-items: center;
 }
 
 /* --- Sluitknop: geel bolletje met zwart kruisje, in de hoek ---- */
@@ -1669,8 +1689,17 @@ address { font-style: normal; }
 .promo__media {
   position: relative;
   /* Staande uitsnede, zoals in het ontwerp: zo is de kaart hoger dan breed
-     verdeeld en komt de kring glazen vol in beeld. */
+     verdeeld en komt de kring glazen vol in beeld. De hoogte volgt uit de
+     breedte, nooit omgekeerd. */
   aspect-ratio: 5 / 6;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-width: 0;
+  align-self: center;
+  /* Op een laag scherm (laptop in landschap, klein venster) mag de foto de
+     kaart niet buiten beeld duwen: ze wordt dan wat strakker uitgesneden. */
+  max-height: calc(var(--promo-max-h) - 2 * var(--promo-pad));
   border-radius: clamp(10px, 1.2vw, 16px);
   overflow: hidden;
   background: var(--charcoal);
@@ -1717,6 +1746,9 @@ address { font-style: normal; }
 
 /* --- Tekstkolom ------------------------------------------------ */
 .promo__body {
+  /* Zonder min-width: 0 mag een kolom in een raster niet smaller worden dan
+     haar langste woord, en duwt lange tekst de kaart breder dan het scherm. */
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
